@@ -125,9 +125,11 @@ const update = () => {
 }
 const emailTest = ()=>{
   sendEmailTest().then(r=>{
-      if (r?.log?.error){
+      if (r?.data){
+        Message.success(t('email.send_test_success'));
+      }else{
         Message.warning({
-          duration:5000,
+          duration:3000,
           content:r?.log?.error
         })
       }

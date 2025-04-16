@@ -155,6 +155,7 @@ export default {
   'email.test_desc': 'Enable this when the site does not use HTTPS, or when CDN or reverse proxy forces HTTPS.',
   'email.input_placeholder': 'Please enter',
   'email.send_test': 'Send Test Email',
+  'email.send_test_success': 'Send Test Email Success',
 
   'individuation.warning': 'If you deploy the V2board admin panel in a decoupled way, the configuration on this page will not take effect.',
   'individuation.learn_more': 'Learn about decoupling',

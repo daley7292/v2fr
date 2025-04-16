@@ -152,6 +152,7 @@ export default {
   'email.test_desc': '当站点没有使用HTTPS，CDN或反代开启强制HTTPS时需要开启。',
   'email.input_placeholder': '请输入',
   'email.send_test': '发送测试邮件',
+  'email.send_test_success': '发送测试邮件成功',
 
   'individuation.warning': '如果你采用前后分离的方式部署V2board管理端，那么本页配置将不会生效。',
   'individuation.learn_more': '了解前后分离',
