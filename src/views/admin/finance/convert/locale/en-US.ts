@@ -37,6 +37,8 @@ export default {
   'convert.form.is_invitation.yes': 'Yes',
   'convert.form.end_at': 'End Time',
   'convert.form.email.not_exists':'email does not exist',
-  'convert.form.email.format_err':'Please check the email format'
+  'convert.form.email.format_err':'Please check the email format',
+  'convert.form.redeem_code': 'Redemption Code',
+  'convert.form.redeem_code.placeholder': 'Leave blank to auto-generate in the backend',
 
 };

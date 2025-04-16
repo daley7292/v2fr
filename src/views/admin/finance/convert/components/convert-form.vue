@@ -80,6 +80,9 @@ querySubscription();
       <a-form-item field="name" :label="t('convert.form.name')">
         <a-input v-model="convertForm.name" :placeholder="t('convert.form.name.placeholder')" />
       </a-form-item>
+      <a-form-item field="name" :label="t('convert.form.redeem_code')">
+        <a-input v-model="convertForm.redeem_code" :placeholder="t('convert.form.redeem_code.placeholder')" :disabled="convertForm.id"/>
+      </a-form-item>
       <a-form-item field="plan_id" :label="t('convert.form.plan_id')">
         <a-select :placeholder="t('convert.form.plan_id.placeholder')" v-model="convertForm.plan_id">
           <div v-for="(item, index) in subscriptions" :key="index">

@@ -36,6 +36,10 @@ export default {
   'convert.form.is_invitation.no': '否',
   'convert.form.is_invitation.yes': '是',
   'convert.form.end_at': '结束时间',
+  'convert.form.email.not_exists':'邮箱不存在',
+  'convert.form.email.format_err':'请检查邮箱格式',
+  'convert.form.redeem_code':'兑换码',
+  'convert.form.redeem_code.placeholder':'留空则后台自动生成',
   'button.record': '兑换记录',
   'add.finance.convert.record': '兑换记录',
   'convert.order_id': 'ID',
@@ -44,6 +48,5 @@ export default {
   'convert.open.order': '查看订单',
   'convert.status': '支付状态',
   'convert.created_at': '创建日期',
-  'convert.form.email.not_exists':'邮箱不存在',
-   'convert.form.email.format_err':'请检查邮箱格式'
+
 };
