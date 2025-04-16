@@ -1,0 +1,93 @@
+export default {
+  'menu.list.subscriptionTable': '查询表格',
+  'subscriptionTable.form.number': '集合编号',
+  'subscriptionTable.form.number.placeholder': '请输入集合编号',
+  'subscriptionTable.form.name': '集合名称',
+  'subscriptionTable.form.name.placeholder': '请输入集合名称',
+  'subscriptionTable.form.contentType': '内容体裁',
+  'subscriptionTable.form.contentType.img': '图文',
+  'subscriptionTable.form.contentType.horizontalVideo': '横版短视频',
+  'subscriptionTable.form.contentType.verticalVideo': '竖版小视频',
+  'subscriptionTable.form.filterType': '筛选方式',
+  'subscriptionTable.form.filterType.artificial': '人工筛选',
+  'subscriptionTable.form.filterType.rules': '规则筛选',
+  'subscriptionTable.form.createdTime': '创建时间',
+  'subscriptionTable.form.status': '状态',
+  'subscriptionTable.form.status.online': '已上线',
+  'subscriptionTable.form.status.offline': '已下线',
+  'subscriptionTable.form.search': '查询',
+  'subscriptionTable.form.reset': '重置',
+  'subscriptionTable.form.selectDefault': '全部',
+  'subscriptionTable.operation.create': '新建',
+  'subscriptionTable.operation.import': '批量导入',
+  'subscriptionTable.operation.download': '下载',
+  // columnss三杉德
+  'subscriptionTable.columns.id': 'ID',
+  'subscriptionTable.columns.show': '销售状态',
+  'subscriptionTable.columns.renew': '续费',
+  'subscriptionTable.columns.name': '名称',
+  'subscriptionTable.columns.count': '统计',
+  'subscriptionTable.columns.transfer_enable': '流量',
+  'subscriptionTable.columns.month_price': '月付',
+  'subscriptionTable.columns.quarter_price': '季付',
+  'subscriptionTable.columns.half_year_price': '半年付',
+  'subscriptionTable.columns.year_price': '年付',
+  'subscriptionTable.columns.two_year_price': '两年付',
+  'subscriptionTable.columns.three_year_price': '三年付',
+  'subscriptionTable.columns.onetime_price': '一次性',
+  'subscriptionTable.columns.reset_price': '重置包',
+  'subscriptionTable.columns.group_id': '权限组',
+  'subscriptionTable.columns.operations': '操作',
+
+  // Form submission message
+  'subscription.submit_success': '提交成功',
+
+// Form labels
+  'subscription.form.name': '套餐名称',
+  'subscription.form.description': '套餐描述',
+  'subscription.form.monthly': '月付',
+  'subscription.form.quarterly': '季付',
+  'subscription.form.half_year': '半年',
+  'subscription.form.yearly': '年付',
+  'subscription.form.two_year': '两年付',
+  'subscription.form.three_year': '三年付',
+  'subscription.form.onetime': '一次性',
+  'subscription.form.reset_package': '重置包',
+  'subscription.form.traffic': '套餐流量',
+  'subscription.form.permission_group': '权限组',
+  'subscription.form.add_permission_group': '添加权限组',
+  'subscription.form.reset_method': '流量重置方式',
+  'subscription.form.max_capacity': '最大容纳用户量',
+  'subscription.form.speed_limit': '限速',
+  'subscription.form.force_update': '强制用户更新',
+  'subscription.form.ip_limit': '限制ip数',
+  'subscription.form.device_count': '设备数量',
+
+// Placeholders
+  'subscription.placeholder.name': '请输入套餐名称',
+  'subscription.placeholder.description': '请输入套餐描述，支持HTML',
+  'subscription.placeholder.select_permission': '请选择权限组',
+  'subscription.placeholder.select_reset_method': '请选择流量重置方式',
+  'subscription.placeholder.no_limit': '留空则不限制',
+  'subscription.placeholder.no_speed_limit': '留空则不限速',
+  'subscription.placeholder.ip_limit': '限制ip数',
+  'subscription.placeholder.max_devices': '最大在线设备数',
+
+// Reset methods
+  'subscription.reset_method.system': '跟随系统设置',
+  'subscription.reset_method.monthly_first': '每月1号',
+  'subscription.reset_method.monthly': '按月重置',
+  'subscription.reset_method.no_reset': '不重置',
+  'subscription.reset_method.yearly_first': '每年1月1日重置',
+  'subscription.reset_method.yearly': '按年重置',
+  'subscription.reset_method.quarterly': '按季度重置',
+  'subscription.reset_method.half_year': '按半年重置',
+
+// Buttons
+  'subscription.button.submit': '提交',
+  'subscription.button.create': '添加订阅',
+
+  'subscription.delete.success': '删除成功'
+
+
+};

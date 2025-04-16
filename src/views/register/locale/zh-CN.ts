@@ -1,0 +1,15 @@
+export default {
+    'register.form.email': '邮箱',
+    'register.form.email_code': '邮箱验证码',
+    'register.form.password': '密码',
+    'register.form.invite_code': '邀请码(选填)',
+    'register.form.redeem_code': '兑换码(选填)',
+    'register.form.submit': '注册',
+    'register.form.back_to_login': '返回登录',
+    'register.form.success': '注册成功',
+    "register.form.verify.email": "邮箱格式错误",
+    "register.form.verify.email_code": "无效的邮箱code",
+    "register.form.verify.password": "密码必填",
+    "register.form.verify.password_check": "确认密码必填",
+    "register.form.verify.password_not_match": "两次输入的密码不一致",
+};
