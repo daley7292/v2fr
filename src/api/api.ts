@@ -85,7 +85,7 @@ export const apiUrl = {
 }
 
 export const userApiUrl = {
-    checkEmail: "api/v1/passport/api/checkEmail",
+    checkEmail: "/api/v1/passport/api/checkEmail",
     queryUserNotice: "/api/v1/user/notice/fetch",
     queryOrderList: "/api/v1/user/order/fetch",
     queryOrderDetails: "/api/v1/user/order/detail",
