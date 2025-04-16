@@ -37,5 +37,6 @@ export default {
   'convert.form.is_invitation.yes': 'Yes',
   'convert.form.end_at': 'End Time',
   'convert.form.email.not_exists':'email does not exist',
+  'convert.form.email.format_err':'Please check the email format'
 
 };

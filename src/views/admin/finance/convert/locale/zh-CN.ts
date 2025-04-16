@@ -44,5 +44,6 @@ export default {
   'convert.open.order': '查看订单',
   'convert.status': '支付状态',
   'convert.created_at': '创建日期',
-  'convert.form.email.not_exists':'邮箱不存在'
+  'convert.form.email.not_exists':'邮箱不存在',
+   'convert.form.email.format_err':'请检查邮箱格式'
 };

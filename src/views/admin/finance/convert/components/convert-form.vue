@@ -48,12 +48,20 @@ const submitconvert = (value: any, errors: any) => {
 const rules = {
   email: [
     {
-      required: true,
-      message: 'password is required',
+      message: t('convert.form.email.format_err'),
     },
     {
       validator: async (value: string, cb: (error?: string) => void) => {
-        const { data } = await CheckEmail({ email: value })
+        console.log(value)
+        if (value === undefined){
+          cb()
+          return
+        }
+        const { data,code,message } = await CheckEmail({ email: value })
+        if (code === 422 ){
+          cb(message);
+          return;
+        }
         if (!data.exists) {
           cb(t('convert.form.email.not_exists'));
         } else {
@@ -98,7 +106,7 @@ querySubscription();
       <!--      </a-form-item>-->
       <a-row>
         <a-col :span="12">
-          <a-form-item field="email" :label="t('convert.form.email')" required>
+          <a-form-item field="email" :label="t('convert.form.email')" >
             <a-input v-model="convertForm.email" :placeholder="t('convert.form.email.placeholder')" />
           </a-form-item>
         </a-col>
