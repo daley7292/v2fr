@@ -77,7 +77,7 @@ onMounted(() => {
         </a-col>
       </a-row>
       <a-form-item field="tags" :label="t('node.form.tags')" v-if="show(['shadowsocks','vmess','trojan','hysteria'])">
-        <a-input-tag :default-value="[]" v-model="nodeForm.tags" :style="{width:'320px'}" :placeholder="t('node.form.tags.placeholder')" allow-clear/>
+        <a-input-tag :default-value="[]" v-model="nodeForm.tags" :style="{width:'100%'}" :placeholder="t('node.form.tags.placeholder')" allow-clear/>
       </a-form-item>
       <a-form-item v-if="show(['shadowsocks','vmess','trojan','hysteria'])">
         <template #label>
@@ -126,17 +126,17 @@ onMounted(() => {
         </a-col>
       </a-row>
       <a-row v-if="show(['trojan','hysteria'])">
-        <a-col :span="8">
+        <a-col :span="8" >
           <a-form-item :label="t('node.form.connection_port')">
             <a-input v-model="nodeForm.port" :placeholder="t('node.form.connection_port.placeholder')"/>
           </a-form-item>
         </a-col>
-        <a-col :span="8">
+        <a-col :span="7" :offset="1">
           <a-form-item :label="t('node.form.server_port')">
             <a-input v-model="nodeForm.server_port" :placeholder="t('node.form.server_port.placeholder')"/>
           </a-form-item>
         </a-col>
-        <a-col :span="8">
+        <a-col :span="7" :offset="1">
           <a-form-item :label="t('node.form.allow_insecure')">
             <a-select :default-value="0" v-model="nodeForm.allow_insecure">
               <a-option :value="0">{{ t('node.form.allow_insecure.no') }}</a-option>
