@@ -142,10 +142,10 @@ import {useAppStore, useUserStore} from '@/store';
 import {LOCALE_OPTIONS} from '@/locale';
 import useLocale from '@/hooks/locale';
 import useUser from '@/hooks/user';
-import {GetAppName,GetLogo} from '@/utils/comm-config';
+import {GetAppName} from '@/utils/comm-config';
 import Menu from '@/components/menu/index.vue';
-import router from "@/views/admin/server/router/index.vue";
 import { useRouter } from "vue-router";
+import { queryConfig} from "@/api/admin/system/system";
 
 const appStore = useAppStore();
 const userStore = useUserStore();
@@ -153,9 +153,7 @@ const {logout} = useUser();
 const {changeLocale, currentLocale} = useLocale();
 const {isFullscreen, toggle: toggleFullScreen} = useFullscreen();
 const locales = [...LOCALE_OPTIONS];
-const avatar = computed(() => {
-  return userStore.avatar;
-});
+
 const email = computed(() => {
   return userStore.email;
 });
@@ -208,7 +206,18 @@ const switchRoles = async () => {
 const toggleDrawerMenu = inject('toggleDrawerMenu') as () => void;
 const route = useRouter()
 const toUserHome =()=>{
-  route.push({path:"/dashboard"});
+  const role =localStorage.getItem("role")
+  if (role&&role==="1"){
+      queryConfig().then(r=>{
+        if (r?.data?.site?.app_url){
+          window.location.href =r.data.site.app_url
+        }else{
+          route.push({path:"/dashboard"});
+        }
+      })
+  }else{
+    route.push({path:"/dashboard"});
+  }
 }
 </script>
 
