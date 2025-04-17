@@ -20,10 +20,13 @@ const queryPaymentMethodList = () => {
   })
 }
 const submitForm = (values: any) => {
+  if (values['handling_fee_percent']==null){
+    values['handling_fee_percent'] =undefined
+  }
   savePaymentMethod(values).then(r => {
     if (r.data) {
       Message.success({
-        content: '提交成功'
+        content: t('payment.form.save_success'),
       })
       close()
     }
@@ -83,12 +86,14 @@ onMounted(() => {
       <a-row>
         <a-col :span="11">
           <a-form-item field="handling_fee_percent" :label="t('payment.form.percentage_fee')">
-            <a-input v-model="paymentMethodForm.handling_fee_percent" :placeholder="t('payment.form.percentage_fee_desc')"/>
+            <a-input v-model="paymentMethodForm.handling_fee_percent"  :placeholder="t('payment.form.percentage_fee_desc')">
+              <template #append>%</template>
+            </a-input>
           </a-form-item>
         </a-col>
         <a-col :span="11" :offset="2">
-          <a-form-item field="handling_fee_fixed" label="百分比手续费(选填)">
-            <a-input v-model="paymentMethodForm.handling_fee_fixed" placeholder="在订单金额基础上附加手续费"/>
+          <a-form-item field="handling_fee_fixed" :label="t('payment.form.handling_fee_percent')">
+            <a-input v-model="paymentMethodForm.handling_fee_fixed"  :placeholder="t('payment.form.handling_fee_percent_desc')"/>
           </a-form-item>
         </a-col>
       </a-row>

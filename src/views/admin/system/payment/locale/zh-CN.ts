@@ -30,8 +30,12 @@ export default {
 
   'payment.form.percentage_fee': '百分比手续费(选填)',
   'payment.form.percentage_fee_desc': '在订单金额基础上附加手续费',
+  'payment.form.handling_fee_percent': '固定手续费(选填)',
+  'payment.form.handling_fee_percent_desc': '在订单金额基础上附加手续费',
 
   'payment.form.interface_file': '接口文件',
   'payment.form.interface_file_desc': '请选择支付接口',
+
+  'payment.form.save_success':'提交成功'
 
 };

@@ -29,8 +29,11 @@ export default {
 
   'payment.form.percentage_fee': 'Percentage Fee (optional)',
   'payment.form.percentage_fee_desc': 'Additional fee based on the order amount',
+  'payment.form.handling_fee_percent': 'Fixed Fee (optional)',
+  'payment.form.handling_fee_percent_desc': 'Additional fee based on the order amount',
 
   'payment.form.interface_file': 'Interface File',
   'payment.form.interface_file_desc': 'Please select a payment interface',
+  'payment.form.save_success':'submit success'
 
 };
