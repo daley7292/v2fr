@@ -36,7 +36,7 @@ export const apiUrl = {
     queryUser: `/api/v1/${adminUrl}/user/fetch`,
     queryUserDetails: `/api/v1/${adminUrl}/user/getUserInfoById`,
     updateUser: `/api/v1/${adminUrl}/user/update`,
-    userGenerate: `api/v1/${adminUrl}/user/generate`,
+    userGenerate: `/api/v1/${adminUrl}/user/generate`,
     resetSecret: `/api/v1/${adminUrl}/user/resetSecret`,
     queryVoucher: `/api/v1/${adminUrl}/coupon/fetch`,
     saveVoucher: `/api/v1/${adminUrl}/coupon/generate`,
