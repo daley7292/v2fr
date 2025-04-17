@@ -111,7 +111,6 @@ export const userApiUrl = {
     changePassword: "/api/v1/user/changePassword",
     inviteSave: "/api/v1/user/invite/save",
     inviteFetch: "/api/v1/user/invite/fetch",
-    inviteDetails: "/api/v1/user/invite/details",
     commConfig: "/api/v1/user/comm/config",
     userTransfer: "/api/v1/user/transfer",
     userTicketWithdraw: "/api/v1/user/ticket/withdraw",
