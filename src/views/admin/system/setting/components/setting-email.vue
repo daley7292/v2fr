@@ -88,7 +88,6 @@
       </a-col>
       <a-col :xs="24" :xl="12" style="text-align: right;padding: 2px">
         <a-select :style="{width:'320px'}" default-value="" placeholder="" v-model="emailForm.email_template" @change="update">
-          <a-option value="">default</a-option>
         </a-select>
       </a-col>
       <a-divider dashed/>
