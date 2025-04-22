@@ -50,7 +50,7 @@ import { PolicyParams } from '@/api/list';
 import { Pagination } from '@/types/global';
 import type { TableColumnData } from '@arco-design/web-vue/es/table/interface';
 import cloneDeep from 'lodash/cloneDeep';
-import { DeleteNotify, Notify, QueryNotify, ShowNotify } from "@/api/admin/user/notify";
+import { DeleteNotify, Notify, QueryNotify, ShowNotify ,newNotify} from "@/api/admin/user/notify";
 import NotifyForm from "@/views/admin/user/notice/components/notify-form.vue";
 import { formatTimestamp } from "../../../../api/admin/public";
 
@@ -61,6 +61,17 @@ const notifyModal = ref(false)
 
 const notifyForm = ref<Notify>()
 const showCreateNotify = () => {
+  notifyForm.value = {
+    id: undefined, // 你可以设置适当的默认值
+    title: "",
+    content: "",
+    show: undefined,
+    img_url: "",
+    windows_type:1,
+    tags: [],
+    created_at: undefined,
+    updated_at: undefined,
+  };
   notifyModal.value = true
 }
 
