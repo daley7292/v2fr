@@ -68,7 +68,7 @@ querySubscription()
             <a-form-item field="value">
               <a-input v-model="voucherForm.value" :placeholder="t('voucher.form.value.placeholder')">
                 <template #append>
-                  {{ GetCurrencySymbol() }}
+                  {{ voucherForm.type === 1?GetCurrencySymbol():'%' }}
                 </template>
               </a-input>
             </a-form-item>
