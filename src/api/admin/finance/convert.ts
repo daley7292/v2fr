@@ -52,6 +52,13 @@ export const SaveConvert = (params: any) => {
   return axios.post<OpResult>(apiUrl.convertSave, buildForm(params));
 };
 
+/**
+ * 保存或编辑转换配置
+ */
+export const DeleteConvert = (params: any) => {
+  return axios.post<OpResult>(apiUrl.convertDelete, buildForm(params));
+};
+
 export const GetRedeemOrders = (params: any) => {
   return axios.post<Convert>(apiUrl.convertGetRedeemOrders , buildForm(params));
 }

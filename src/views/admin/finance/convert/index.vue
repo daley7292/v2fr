@@ -7,7 +7,7 @@
           <template #icon>
             <icon-plus />
           </template>
-          {{t('add.finance.convert')}}
+          {{ t('add.finance.convert') }}
         </a-button>
       </div>
       <a-table
@@ -20,12 +20,16 @@
         :size="size"
         @page-change="onPageChange"
         @page-size-change="pageSizeChange"
- >
+      >
         <template #index="{ rowIndex }">
           {{ rowIndex + 1 + (pagination.current - 1) * pagination.pageSize }}
         </template>
         <template #is_invitation="{ record }">
-          {{ record.is_invitation == 1 ? t('add.finance.is_invitation') : t('add.finance.not_invitation') }}
+          {{
+            record.is_invitation == 1
+              ? t('add.finance.is_invitation')
+              : t('add.finance.not_invitation')
+          }}
         </template>
         <template #end_at="{ record }">
           {{ formatTimestamp(record.end_at) }}
@@ -34,6 +38,10 @@
           <a-space>
             <a-button type="primary" @click="editConvert(record)"
               >{{ t('button.edit') }}
+            </a-button>
+            <a-button type="primary" @click="deleteConvert(record.id
+            )"
+              >{{ t('button.delete') }}
             </a-button>
             <a-button type="primary" @click="recordConvert(record)"
               >{{ t('button.record') }}
@@ -54,7 +62,7 @@
       :unmount-on-close="true"
     >
       <template #title>
-        {{t('add.finance.convert')}}
+        {{ t('add.finance.convert') }}
       </template>
       <convert-form :data="convertForm" @close="closeModal" />
     </a-modal>
@@ -70,7 +78,7 @@
       :unmount-on-close="true"
     >
       <template #title>
-        {{t('add.finance.convert.record')}}
+        {{ t('add.finance.convert.record') }}
       </template>
       <convert-record :code="convertCode" @close="closeRecordModal" />
     </a-modal>
@@ -91,6 +99,7 @@
     QueryConvert,
     Convert,
     defaultConvert,
+    DeleteConvert,
   } from '@/api/admin/finance/convert';
   import { formatTimestamp } from '../../../../api/admin/public';
 
@@ -102,6 +111,12 @@
   const closeModal = () => {
     showAddConvertModal.value = false;
     fetchData();
+  };
+
+  const deleteConvert = (id:any) => {
+    DeleteConvert({ 'id': id }).then((res) => {
+      fetchData();
+    });
   };
 
   const addConvert = () => {
@@ -124,7 +139,6 @@
     showAddConvertRecordModal.value = true;
   };
 
-
   const { loading, setLoading } = useLoading(true);
   const renderData = ref<Convert[]>([]);
   const cloneColumns = ref<Column[]>([]);
@@ -139,10 +153,10 @@
 
   const pagination = reactive({
     ...basePagination,
-    showTotal:true,
-    showJumper:true,
-    showPageSize:true,
-pageSizeOptions:[30,50,100,150]
+    showTotal: true,
+    showJumper: true,
+    showPageSize: true,
+    pageSizeOptions: [30, 50, 100, 150],
   });
   const pageSizeChange = (pageSize: number) => {
     pagination.pageSize = pageSize;
