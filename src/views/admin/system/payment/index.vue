@@ -13,7 +13,7 @@
         {{ $t('payment.operation.add') }}
       </a-button>
       <a-table row-key="id" :loading="loading" :columns="(cloneColumns as TableColumnData[])" :data="renderData"
-        :bordered="false" :pagination="false">
+        :bordered="false" :pagination="false" @change="handleTableChange" :draggable="{ type: 'handle', width: 40 }">
         <template #enable="{ record }">
           <a-switch :default-checked="record.enable == 1" checked-text="启用" unchecked-text="禁用"
             @change="changeShowPayMethod(record)" />
@@ -35,13 +35,16 @@ import useLoading from '@/hooks/loading';
 import type { TableColumnData } from '@arco-design/web-vue/es/table/interface';
 import cloneDeep from 'lodash/cloneDeep';
 import Payment from "@/views/admin/system/payment/components/payment.vue";
-import { defaultPayMethod, PayMethod, queryPayMethods, showPayMethod } from "@/api/admin/system/payment";
+import {defaultPayMethod, PaymentSort, PayMethod, queryPayMethods, showPayMethod} from "@/api/admin/system/payment";
+import {Node, NodeSort} from "@/api/admin/server/node";
+import {SaveRuleSort} from "@/api/admin/server/rule";
 
 const { t } = useI18n();
-const paymentMethod = ref(defaultPayMethod)
+const paymentMethod = ref()
 const addPaymentMethod = ref(false)
 const showAddModal = () => {
-  paymentMethod.value = defaultPayMethod
+  let obj = {...defaultPayMethod}
+  paymentMethod.value = obj
   addPaymentMethod.value = true
 }
 
@@ -59,8 +62,18 @@ const changeShowPayMethod = async (payMethod: PayMethod) => {
 
 }
 
+const handleTableChange = (_data) => {
+  renderData.value = _data
+  let sort =[]
+  _data.forEach((v,index)=>{
+    sort.push(v.id)
+  })
+  PaymentSort({ids:sort})
+}
 const editPayMethod = (payMethod: PayMethod) => {
-  paymentMethod.value = payMethod
+  let obj = {...payMethod}
+  obj['handling_fee_fixed'] =  obj['handling_fee_fixed'] / 100
+  paymentMethod.value = obj
   addPaymentMethod.value = true
 }
 
