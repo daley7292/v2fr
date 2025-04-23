@@ -39,12 +39,12 @@
             <a-button type="primary" @click="editConvert(record)"
               >{{ t('button.edit') }}
             </a-button>
-            <a-button type="primary" @click="deleteConvert(record.id
-            )"
-              >{{ t('button.delete') }}
-            </a-button>
             <a-button type="primary" @click="recordConvert(record)"
               >{{ t('button.record') }}
+            </a-button>
+            <a-button type="primary" status="danger" @click="deleteConvert(record.id
+            )"
+            >{{ t('button.delete') }}
             </a-button>
           </a-space>
         </template>
