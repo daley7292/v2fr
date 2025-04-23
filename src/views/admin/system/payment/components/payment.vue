@@ -3,6 +3,7 @@ import {defineEmits, onMounted, reactive, ref, watch} from "vue";
 import {getPaymentForm, getPaymentMethods, PayFormItem, savePaymentMethod} from "@/api/admin/system/payment";
 import {Message} from "@arco-design/web-vue";
 import { useI18n } from 'vue-i18n';
+import {GetCurrencySymbol} from "../../../../../utils/comm-config";
 
 
 const { t } = useI18n();
@@ -12,6 +13,7 @@ const close = () => {
   emit('closeModal')
 }
 const props = defineProps(['data'])
+const paymentMethodForm = reactive(props.data)
 
 const payMethods = ref<String[]>([])
 const queryPaymentMethodList = () => {
@@ -20,10 +22,11 @@ const queryPaymentMethodList = () => {
   })
 }
 const submitForm = (values: any) => {
-  if (values['handling_fee_percent']==null){
-    values['handling_fee_percent'] =undefined
+  let objs = {...paymentMethodForm}
+  if (objs['handling_fee_fixed']){
+    objs['handling_fee_fixed'] = objs['handling_fee_fixed'] *100
   }
-  savePaymentMethod(values).then(r => {
+  savePaymentMethod(objs).then(r => {
     if (r.data) {
       Message.success({
         content: t('payment.form.save_success'),
@@ -49,7 +52,6 @@ const queryPaymentForm = () => {
     })
   })
 }
-const paymentMethodForm = reactive(props.data)
 queryPaymentForm()
 //监听父config改变
 watch(() => props.data, (newVal) => {
@@ -66,9 +68,6 @@ watch(() => props.data, (newVal) => {
   queryPaymentForm()
 });
 queryPaymentMethodList()
-onMounted(() => {
-  paymentMethodForm['handling_fee_fixed'] = paymentMethodForm['handling_fee_fixed'] / 100
-})
 </script>
 
 <template>
@@ -86,14 +85,16 @@ onMounted(() => {
       <a-row>
         <a-col :span="11">
           <a-form-item field="handling_fee_percent" :label="t('payment.form.percentage_fee')">
-            <a-input v-model="paymentMethodForm.handling_fee_percent"  :placeholder="t('payment.form.percentage_fee_desc')">
+            <a-input v-model="paymentMethodForm.handling_fee_percent"  type="number" :min="0"  :placeholder="t('payment.form.percentage_fee_desc')">
               <template #append>%</template>
             </a-input>
           </a-form-item>
         </a-col>
         <a-col :span="11" :offset="2">
           <a-form-item field="handling_fee_fixed" :label="t('payment.form.handling_fee_percent')">
-            <a-input v-model="paymentMethodForm.handling_fee_fixed"  :placeholder="t('payment.form.handling_fee_percent_desc')"/>
+            <a-input v-model="paymentMethodForm.handling_fee_fixed" type="number" :min="0" :placeholder="t('payment.form.handling_fee_percent_desc')">
+              <template #append>{{GetCurrencySymbol()}}</template>
+            </a-input>
           </a-form-item>
         </a-col>
       </a-row>

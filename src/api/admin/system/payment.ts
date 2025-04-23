@@ -107,27 +107,13 @@ export const getPaymentForm = (params: any) => {
  * @returns 操作结果
  */
 export const savePaymentMethod = (params: any) => {
-  const r = ']';
-  const l = '[';
-  const w = '';
-  const dataForm = new FormData();
+  return axios.post(apiUrl.savePaymentMethod, buildForm(params));
+};
 
-  Object.keys(params.values).forEach((k) => {
-    if (k === 'config') {
-      // 处理嵌套的config对象
-      Object.keys(params.values[k]).forEach((ck) => {
-        dataForm.append(k + l + ck + r, params.values[k][ck]);
-      });
-    } else {
-      // 处理普通字段
-      dataForm.append(k, params.values[k]);
-    }
 
-    // 处理固定手续费（转换为分）
-    if (k === 'handling_fee_fixed') {
-      dataForm.append(k, params.values[k] * 100 + w);
-    }
-  });
-
-  return axios.post(apiUrl.savePaymentMethod, dataForm);
+/**
+ * 支付排序
+ */
+export const PaymentSort = (params: any) => {
+  return axios.post(apiUrl.SortPaymentMethod, buildForm(params));
 };
