@@ -100,6 +100,7 @@ export default {
   'orderDetail.label.discount_amount': '优惠金额',
   'orderDetail.label.refund_amount': '退回金额',
   'orderDetail.label.surplus_amount': '折抵金额',
+  'orderDetail.label.invite_user': '邀请人',
   'orderDetail.label.created_at': '创建时间',
   'orderDetail.label.updated_at': '更新时间',
   //

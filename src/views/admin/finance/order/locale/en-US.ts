@@ -102,4 +102,6 @@ export default {
   'orderDetail.label.surplus_amount': 'Credit Amount',
   'orderDetail.label.created_at': 'Created At',
   'orderDetail.label.updated_at': 'Updated At',
+  'orderDetail.label.invite_user': 'Invite User',
+
 };

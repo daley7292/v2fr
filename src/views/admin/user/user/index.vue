@@ -338,6 +338,7 @@
   import UserNetworkForm from '@/views/admin/user/user/components/user-network-form.vue';
   import UserRenewalNewPurchase from '@/views/admin/user/user/components/user-renewal-new-purchase.vue';
   import { useRouter } from 'vue-router';
+  import { useRoute } from 'vue-router';
   import { adminUrl } from '@/utils/admin-url';
 
   const { t } = useI18n();
@@ -829,8 +830,17 @@
     fetchData({ ...basePagination, current });
   };
 
-  fetchData(basePagination);
+  const route = useRoute()
   onMounted(() => {
+    if (route.query.invite_by_email) {
+      condition.value = { filter: [{ key: 'invite_by_email', condition: '=', value: route.query.invite_by_email, tempValue: '' }] }
+      defaultCond.value.push({ key: 'invite_by_email', condition: '=', value: route.query.invite_by_email, tempValue: '' })
+    }
+
+    if (route.query.email) {
+      condition.value = { filter: [{ key: 'email', condition: '模糊', value: route.query.email, tempValue: '' }] }
+      defaultCond.value.push({ key: 'email', condition: '模糊', value: route.query.email, tempValue: '' })
+    }
     QuerySubscription().then((r) => {
       let vals = [];
       r.data.forEach((item, index) => {
@@ -847,6 +857,7 @@
         value: vals,
       });
     });
+    fetchData(basePagination);
   });
 
   watch(

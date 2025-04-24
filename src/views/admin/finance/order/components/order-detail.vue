@@ -20,7 +20,7 @@ const orderDetailsForm = reactive<Order>(props.details)
   <a-form :model="orderForm">
     <!-- 用户邮箱，点击可跳转到用户管理页面 -->
     <a-form-item :label="t('orderDetail.label.email')">
-      <router-link :to="`/${adminUrl}/user/manager?id=${orderForm.user_id}`">{{ orderDetailsForm?.email }}</router-link>
+      <router-link :to="`/${adminUrl}/user/manager?email=${orderDetailsForm?.email}`">{{ orderDetailsForm?.email }}</router-link>
     </a-form-item>
     <!-- 订单编号 -->
     <a-form-item :label="t('orderDetail.label.trade_no')">
@@ -72,6 +72,10 @@ const orderDetailsForm = reactive<Order>(props.details)
     <a-form-item :label="t('orderDetail.label.surplus_amount')">
       {{ orderForm.surplus_amount / 100 }}
     </a-form-item>
+    <a-form-item v-if="orderDetailsForm.invite_user && orderDetailsForm.invite_user.email" :label="t('orderDetail.label.invite_user')">
+      <router-link :to="`/${adminUrl}/user/manager?invite_by_email=${orderDetailsForm.invite_user.email}`">{{ orderDetailsForm.invite_user.email }}</router-link>
+    </a-form-item>
+
     <!-- 创建时间，使用formatTimestamp函数格式化 -->
     <a-form-item :label="t('orderDetail.label.created_at')">
       {{ formatTimestamp(orderForm.created_at) }}

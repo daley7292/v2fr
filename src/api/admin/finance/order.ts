@@ -7,11 +7,49 @@ import {
 } from '@/api/admin/public';
 import { apiUrl } from '@/api/api';
 
+export interface InviteUser {
+  id: number;
+  invite_user_id: number | null;
+  telegram_id: number | null;
+  email: string;
+  password: string;
+  password_algo: string | null;
+  password_salt: string | null;
+  balance: number;
+  discount: number | null;
+  commission_type: number;
+  commission_rate: number | null;
+  commission_balance: number;
+  t: number;
+  u: number;
+  d: number;
+  ip_limit: number;
+  transfer_enable: number;
+  banned: number;
+  is_admin: number;
+  last_login_at: number;
+  is_staff: number;
+  last_login_ip: string | null;
+  uuid: string;
+  group_id: number;
+  plan_id: number;
+  speed_limit: number;
+  remind_expire: number;
+  remind_traffic: number;
+  token: string;
+  expired_at: number;
+  remarks: string | null;
+  created_at: number;
+  updated_at: number;
+  has_received_inviter_reward: number;
+}
+
 export interface Order {
   id?: any;
   email?: any;
   invite_user_id?: any;
   user_id?: any;
+  invite_user: any;
   plan_id?: any;
   coupon_id?: any;
   payment_id?: any;
@@ -35,9 +73,9 @@ export interface Order {
   updated_at?: any;
   plan_name?: any;
 }
-
 // 创建一个默认的 Order 对象
 export const defaultFinanceOrder: Order = {
+  invite_user: undefined,
   id: undefined, // 你可以设置适当的默认值
   user_id: undefined,
   plan_id: undefined,
@@ -53,7 +91,7 @@ export const defaultFinanceOrder: Order = {
   paid_at: undefined,
   created_at: undefined,
   updated_at: undefined,
-  plan_name: undefined,
+  plan_name: undefined
 };
 
 /**
