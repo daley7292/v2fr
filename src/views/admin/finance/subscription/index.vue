@@ -36,28 +36,28 @@
         </template>
         <!-- 各种价格显示（除以100转换为元） -->
         <template #month_price="{ record }">
-          {{ record.month_price / 100 }}
+          {{ record.month_price?(record.month_price / 100):'-' }}
         </template>
         <template #quarter_price="{ record }">
-          {{ record.quarter_price / 100 }}
+          {{ record.quarter_price?(record.quarter_price / 100):'-' }}
         </template>
         <template #year_price="{ record }">
-          {{ record.year_price / 100 }}
+          {{ record.year_price?(record.year_price / 100):'-' }}
         </template>
         <template #half_year_price="{ record }">
-          {{ record.half_year_price / 100 }}
+          {{ record.half_year_price?(record.half_year_price / 100):'-' }}
         </template>
         <template #two_year_price="{ record }">
-          {{ record.two_year_price / 100 }}
+          {{ record.two_year_price?(record.two_year_price / 100):'-' }}
         </template>
         <template #three_year_price="{ record }">
-          {{ record.three_year_price / 100 }}
+          {{ record.three_year_price?(record.three_year_price / 100):'-' }}
         </template>
         <template #onetime_price="{ record }">
-          {{ record.onetime_price / 100 }}
+          {{ record.onetime_price?(record.onetime_price / 100):'-' }}
         </template>
         <template #reset_price="{ record }">
-          {{ record.reset_price / 100 }}
+          {{ record.reset_price?(record.reset_price / 100):'-' }}
         </template>
         <!-- 显示状态切换 -->
         <template #show="{ record }">

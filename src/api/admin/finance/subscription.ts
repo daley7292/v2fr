@@ -35,7 +35,7 @@ export const defaultServerSubscription: FinanceSubscription = {
   group_id: undefined,
   transfer_enable: undefined,
   name: undefined,
-  speed_limit: undefined,
+  speed_limit: 0,
   show: undefined,
   sort: undefined,
   renew: undefined,
