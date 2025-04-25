@@ -5,54 +5,54 @@ import { apiUrl } from '@/api/api';
 export interface FinanceSubscription {
   id: any;
   group_id: any;
-  transfer_enable: string;
-  name: string;
-  speed_limit: string;
-  show: string;
-  sort: string;
-  renew: string;
-  content: string;
-  month_price: string;
-  quarter_price: string;
-  half_year_price: string;
-  year_price: string;
-  two_year_price: string;
-  three_year_price: string;
-  onetime_price: string;
-  reset_price: string;
+  transfer_enable: any;
+  name: any;
+  speed_limit: any;
+  show: any;
+  sort: any;
+  renew: any;
+  content: any;
+  month_price: any;
+  quarter_price: any;
+  half_year_price: any;
+  year_price: any;
+  two_year_price: any;
+  three_year_price: any;
+  onetime_price: any;
+  reset_price: any;
   reset_traffic_method: any;
-  capacity_limit: string;
-  created_at: string;
-  updated_at: string;
-  count: string;
+  capacity_limit: any;
+  created_at: any;
+  updated_at: any;
+  count: any;
   force_update: boolean;
   ip_limit: number;
   block_plant_cont: number;
 }
 
 export const defaultServerSubscription: FinanceSubscription = {
-  id: '', // 你可以设置适当的默认值
+  id: undefined, // 你可以设置适当的默认值
   group_id: undefined,
-  transfer_enable: '',
-  name: '',
-  speed_limit: '0',
-  show: '',
-  sort: '',
-  renew: '',
-  content: '',
-  month_price: '',
-  quarter_price: '',
-  half_year_price: '',
-  year_price: '',
-  two_year_price: '',
-  three_year_price: '',
-  onetime_price: '',
-  reset_price: '',
+  transfer_enable: undefined,
+  name: undefined,
+  speed_limit: undefined,
+  show: undefined,
+  sort: undefined,
+  renew: undefined,
+  content: undefined,
+  month_price: undefined,
+  quarter_price: undefined,
+  half_year_price: undefined,
+  year_price: undefined,
+  two_year_price: undefined,
+  three_year_price: undefined,
+  onetime_price: undefined,
+  reset_price: undefined,
   reset_traffic_method: undefined,
-  capacity_limit: '',
-  created_at: '',
-  updated_at: '',
-  count: '',
+  capacity_limit: undefined,
+  created_at: undefined,
+  updated_at: undefined,
+  count: undefined,
   force_update: false,
   ip_limit: 0,
   block_plant_cont: 0,
