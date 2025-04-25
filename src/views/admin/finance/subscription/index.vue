@@ -146,8 +146,10 @@ const editSubscription = (value: FinanceSubscription & Record<string, any>) => {
   let obj: FinanceSubscription = { force_update: true }
   Object.keys(value).forEach(key => {
     if (priceKeys.includes(key)) {
-      // 价格除以100转换为元
-      obj[key] = value[key] / 100
+      if (obj[key]){
+        // 价格除以100转换为元
+        obj[key] = value[key] / 100
+      }
     } else {
       obj[key] = value[key]
     }
