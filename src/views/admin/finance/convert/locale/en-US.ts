@@ -29,6 +29,8 @@ export default {
   'convert.form.duration_value.placeholder': 'Please enter time value',
   'convert.form.email': 'Email',
   'convert.form.email.placeholder': 'Please enter email',
+  'convert.form.count': 'Redemption Code Generation Count',
+  'convert.form.count.placeholder': 'Please enter the redemption code generation count',
   'convert.form.ordinal_number': 'Redemption Count',
   'convert.form.ordinal_number.placeholder': 'Please enter redemption count',
   'convert.form.is_invitation': 'Valid',

@@ -17,6 +17,7 @@ export interface Convert {
   ordinal_number: any;
   redeem_code: any;
   end_at: number;
+  count: number;
 }
 
 // 创建一个默认的 Convert 对象
@@ -31,6 +32,7 @@ export const defaultConvert: Convert = {
   redeem_code: '',
   ordinal_number: undefined,
   end_at: 0,
+  count: 1,
 };
 
 // 使用默认值创建新的 Convert 对象
