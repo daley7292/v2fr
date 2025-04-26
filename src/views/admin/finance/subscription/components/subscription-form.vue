@@ -40,6 +40,10 @@ const submitSubscription = () => {
     }
   })
 
+  if(!obj["speed_limit"]){
+    obj["speed_limit"] =0
+  }
+
   // 保存订阅信息
   SaveSubscription(obj).then(r => {
     if (r.data) {
