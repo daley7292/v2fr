@@ -152,7 +152,7 @@
       <template #title>
         {{ t('order.modal.detail') }}
       </template>
-      <order-detail :data="orderForm" :details="orderDetailsForm" />
+      <order-detail :data="orderForm" :details="orderDetailsForm" :order="orderInfo" />
     </a-modal>
     <!-- 过滤条件模态框 -->
     <a-modal :width="550" :visible="filterShow" :footer="false" @cancel="() => { filterShow = false }">
@@ -308,6 +308,7 @@ const showAddOrderModal = ref(false)
 // 订单表单数据
 const orderForm = ref<Order>(defaultFinanceOrder)
 // 订单详情表单数据
+const orderInfo = ref<Order>()
 const orderDetailsForm = ref<User>()
 // 关闭添加订单模态框并刷新数据
 const closeModal = () => {
@@ -318,6 +319,7 @@ const closeModal = () => {
 const showOrderDetail = ref(false)
 // 查看订单详情
 const orderDetails = (value: Order) => {
+  orderInfo.value = value
   OderDetails({ id: value.id }).then(r => {
     orderForm.value = r.data
     QueryUserDetails({ id: r.data.user_id }).then(userdata => {

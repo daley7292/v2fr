@@ -8,9 +8,11 @@ import { useI18n } from 'vue-i18n';
 // 使用i18n实现国际化
 const { t } = useI18n();
 // 定义组件Props，接收'data'和'details'作为输入
-const props = defineProps(['data', 'details'])
+const props = defineProps(['data', 'details','order'])
 // 创建响应式订单表单数据
 const orderForm = reactive<Order>(props.data)
+//订单
+const orderInfo = reactive<Order>(props.order)
 // 创建响应式订单详情表单数据
 const orderDetailsForm = reactive<Order>(props.details)
 </script>
@@ -46,7 +48,7 @@ const orderDetailsForm = reactive<Order>(props.details)
     </a-form-item>
     <!-- 套餐名称 -->
     <a-form-item :label="t('orderDetail.label.plan_name')">
-      {{ orderForm.plan_name }}
+      {{ orderInfo.plan_name }}
     </a-form-item>
     <!-- 回调编号，若为空则显示'-' -->
     <a-form-item :label="t('orderDetail.label.callback_no')">
