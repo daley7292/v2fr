@@ -33,7 +33,7 @@
         <!-- 订单状态渲染及操作 -->
         <template #status="{ record }">
           <!-- 待处理状态下显示下拉菜单，可标记为已付款或已取消 -->
-          <a-dropdown :popup-max-height="false" v-if="record.status === 0 || record.commission_status === 0 && record.commission_balance > 0 ||record.commission_status === 1 && record.commission_balance > 0">
+          <a-dropdown :popup-max-height="false" v-if="record.status === 0 ">
             <a-button size="small" type="text">
               <a-typography-text type="secondary">
                 <span class="dot-red">•</span>{{ t('order.commission.pending') }}
@@ -51,10 +51,10 @@
               </a-doption>
               <a-doption  v-if="record.status === 0">
                 <a-button type="text" @click="cancelOrder(record)" status="danger">
-                  {{ t('order.status.cancelled') }}
+                  {{ t('order.status.cancel') }}
                 </a-button>
               </a-doption>
-              <a-doption v-if="record.commission_status === 0 && record.commission_balance > 0">
+<!--              <a-doption v-if="record.commission_status === 0 && record.commission_balance > 0">
                 <a-button type="text" @click="passCommissionPayOrder(record)" status="success">
                   {{ t('order.commission.valid') }}
                 </a-button>
@@ -68,7 +68,7 @@
                 <a-button type="text" @click="cancelCommissionOrder(record)" status="danger">
                   {{ t('order.commission.invalid') }}
                 </a-button>
-              </a-doption>
+              </a-doption>-->
             </template>
           </a-dropdown>
           <!-- 各种订单状态的显示 -->
@@ -86,21 +86,77 @@
           </a-typography-text>
         </template>
         <!-- 佣金状态显示 -->
+
         <template #commission_status="{ record }">
-          {{
-            (record.commission_status === null || record.commission_balance === 0) ?
-              t('order.commission.none') :
-              (record.commission_status === 0 ? t('order.commission.pending') :
-                record.commission_status === 1 ? t('order.commission.processing') :
-                  record.commission_status == 2 ? t('order.filter.commission.paid') :
-                    t('order.commission.invalid'))
-          }}
+          <a-dropdown :popup-max-height="false" >
+            <a-button size="small" type="text">
+              <a-typography-text type="secondary">
+                <span v-if="record.commission_balance>0">
+                <span :style="record.commission_status==1?'color:#1890ff':record.commission_status==2?'color:green':''" >•</span>
+{{ record.commission_status==0?  t('order.commission.pending') :record.commission_status==1?t('order.commission.processing'):record.commission_status==2?'已发放':'-' }}
+                </span>
+                <span v-else>-</span>
+                <a-typography-text v-if="(record.commission_status===0||record.commission_status===1) &&  (record.commission_balance > 0)" type="primary" >
+                  {{ t('order.status.marking') }}
+                </a-typography-text>
+              </a-typography-text>
+              <icon-caret-down v-if="(record.commission_status===0||record.commission_status===1) &&  (record.commission_balance > 0)" />
+            </a-button>
+            <template v-if="record.commission_balance > 0" #content>
+              <a-doption v-if="record.commission_status === 0 && record.commission_balance > 0">
+                <a-button type="text" disabled >
+                  {{ t('order.commission.pending') }}
+                </a-button>
+              </a-doption>
+              <a-doption v-if="record.commission_status === 1 && record.commission_balance > 0">
+                <a-button type="text" @click="passCommissionPayOrder(record,1)" status="success">
+                  {{ t('order.commission.pending') }}
+                </a-button>
+              </a-doption>
+              <a-doption v-if=" record.commission_status  === 1">
+                <a-button type="text" disabled >
+                  {{ t('order.commission.valid') }}
+                </a-button>
+              </a-doption>
+              <a-doption v-if="record.commission_status === 0">
+                <a-button type="text" @click="passCommissionPayOrder(record,1)" >
+                  {{ t('order.commission.valid') }}
+                </a-button>
+              </a-doption>
+              <a-doption  v-if="record.commission_status === 0">
+                <a-button type="text" @click="passCommissionPayOrder(record)" >
+                  {{ t('order.commission.pending') }}
+                </a-button>
+              </a-doption>
+              <a-doption  v-if="record.commission_status === 1 || record.commission_balance === 0 ">
+                <a-button type="text" @click="cancelCommissionOrder(record)" status="danger">
+                  {{ t('order.commission.invalid') }}
+                </a-button>
+              </a-doption>
+              <!--              <a-doption v-if="record.commission_status === 0 && record.commission_balance > 0">
+                              <a-button type="text" @click="passCommissionPayOrder(record)" status="success">
+                                {{ t('order.commission.valid') }}
+                              </a-button>
+                            </a-doption>
+                            <a-doption v-if="record.commission_status === 1 && record.commission_balance > 0">
+                              <a-button type="text" @click="passCommissionPayOrder(record)" status="success">
+                                {{ t('order.commission.pending') }}
+                              </a-button>
+                            </a-doption>
+                            <a-doption  v-if="record.commission_status === 0 && record.commission_balance > 0">
+                              <a-button type="text" @click="cancelCommissionOrder(record)" status="danger">
+                                {{ t('order.commission.invalid') }}
+                              </a-button>
+                            </a-doption>-->
+            </template>
+          </a-dropdown>
         </template>
         <!-- 佣金余额显示 -->
         <template #commission_balance="{ record }">
+
           {{
             (record.commission_balance === null || record.commission_balance === 0) ?
-              t('order.commission.none') : record.commission_balance / 100
+              t('order.commission.none') : (record.commission_balance / 100).toFixed(2)
           }}
         </template>
         <!-- 赠送时间 -->
@@ -365,8 +421,8 @@ const cancelCommissionOrder = (value: Order) => {
 }
 
 // 确认佣金有效
-const passCommissionPayOrder = (value: Order) => {
-  PassUpdateOrder({ trade_no: value.trade_no ,commission_status:1}).then(r => {
+const passCommissionPayOrder = (value: Order,status:number) => {
+  PassUpdateOrder({ trade_no: value.trade_no ,commission_status:status}).then(r => {
     if (r.data) {
       Message.success({
         content: t('order.commission.valid')

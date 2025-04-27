@@ -41,6 +41,7 @@ export default {
 // Filter status options
   'order.filter.status.pending': 'Unpaid',
   'order.filter.status.paid': 'Paid',
+  'order.status.cancel': 'Cancel',
   'order.filter.status.cancelled': 'Cancelled',
   'order.filter.status.completed': 'Completed',
 

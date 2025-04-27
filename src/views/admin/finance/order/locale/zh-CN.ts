@@ -15,6 +15,7 @@ export default {
   'order.status.pending': '待支付',
   'order.status.marking': '标记为',
   'order.status.paid': '已支付',
+  'order.status.cancel': '取消',
   'order.status.cancelled': '已取消',
   'order.status.processing': '开通中',
   'order.status.completed': '已完成',
