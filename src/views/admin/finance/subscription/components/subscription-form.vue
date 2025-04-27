@@ -155,8 +155,8 @@ queryPermissionGroup()
           <a-option :value="0">{{ t('subscription.reset_method.monthly_first') }}</a-option>
           <a-option :value="3">{{ t('subscription.reset_method.yearly_first') }}</a-option>
           <a-option :value="1">{{ t('subscription.reset_method.monthly') }}</a-option>
-<!--          <a-option :value="5">{{ t('subscription.reset_method.quarterly') }}</a-option>-->
-<!--          <a-option :value="6">{{ t('subscription.reset_method.half_year') }}</a-option>-->
+          <a-option :value="5">{{ t('subscription.reset_method.quarterly') }}</a-option>
+          <a-option :value="6">{{ t('subscription.reset_method.half_year') }}</a-option>
           <a-option :value="4">{{ t('subscription.reset_method.yearly') }}</a-option>
           <a-option :value="2">{{ t('subscription.reset_method.no_reset') }}</a-option>
         </a-select>
