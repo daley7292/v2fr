@@ -216,7 +216,7 @@ onMounted(() => {
       </a-form-item>
       <a-form-item>
         <a-space>
-          <a-button @click="close">{{t('button.cancel')}}</a-button>
+          <a-button type="dashed" @click="close">{{t('button.cancel')}}</a-button>
           <a-button html-type="submit" type="primary">{{ t('node.form.submit') }}</a-button>
         </a-space>
       </a-form-item>

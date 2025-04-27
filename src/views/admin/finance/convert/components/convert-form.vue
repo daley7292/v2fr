@@ -178,7 +178,7 @@
       <a-form-item>
         <div style="width: 100%; text-align: center">
           <a-space>
-            <a-button @click="close">{{ t('button.cancel') }}</a-button>
+            <a-button type="dashed" @click="close">{{ t('button.cancel') }}</a-button>
             <a-button type="primary" html-type="submit"
               >{{ t('button.ok') }}
             </a-button>

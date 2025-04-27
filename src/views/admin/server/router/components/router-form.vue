@@ -46,8 +46,8 @@ onMounted(()=>{
       </a-form-item>
       <a-form-item>
         <a-space>
-          <a-button @click="close">{{t('button.cancel')}}</a-button>
-          <a-button @click="submitRouter">{{t('button.submit')}}</a-button>
+          <a-button type="dashed" @click="close">{{t('button.cancel')}}</a-button>
+          <a-button type="primary" @click="submitRouter">{{t('button.submit')}}</a-button>
         </a-space>
       </a-form-item>
     </a-form>

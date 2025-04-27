@@ -61,7 +61,7 @@ onMounted(()=>{
       </a-form-item>
       <a-form-item>
         <a-space>
-          <a-button @click="close">{{t('server.rule.cancel')}}</a-button>
+          <a-button type="dashed" @click="close">{{t('server.rule.cancel')}}</a-button>
           <a-button type="primary" @click="submitRule">{{t('server.rule.submit')}}</a-button>
         </a-space>
       </a-form-item>

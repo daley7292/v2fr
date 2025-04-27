@@ -61,7 +61,7 @@ queryKnowledge()
       <a-form-item>
         <div class="v2-button">
           <a-space>
-            <a-button @click="emits('close')">{{ t('button.cancel') }}</a-button>
+            <a-button type="dashed" @click="emits('close')">{{ t('button.cancel') }}</a-button>
             <a-button type="primary" html-type="submit">{{ t('button.submit') }}</a-button>
           </a-space>
         </div>

@@ -189,8 +189,10 @@ queryPermissionGroup()
       </a-form-item>
       <!-- 表单按钮 -->
       <a-form-item>
-        <a-button @click="close">{{ t('button.cancel') }}</a-button>
-        <a-button type="primary" html-type="submit">{{ t('subscription.button.submit') }}</a-button>
+        <a-space>
+          <a-button type="dashed" @click="close">{{ t('button.cancel') }}</a-button>
+          <a-button type="primary" html-type="submit">{{ t('subscription.button.submit') }}</a-button>
+        </a-space>
       </a-form-item>
     </a-form>
   </div>
