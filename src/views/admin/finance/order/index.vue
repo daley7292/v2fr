@@ -464,9 +464,10 @@ const columns = computed<TableColumnData[]>(() => [
   },
 ]);
 // 获取订单数据
-const fetchData = async (
-  params: PolicyParams
-) => {
+const fetchData =async (params: PolicyParams) => {
+  if (!params){
+    params = {...pagination}
+  }
   setLoading(true);
   try {
     const { data,total } = await QueryOrder(params, condition.value);

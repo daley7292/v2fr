@@ -148,7 +148,7 @@
 
   const basePagination: Pagination = {
     current: 1,
-    pageSize: 10,
+    pageSize: 100,
   };
 
   const pagination = reactive({
@@ -156,7 +156,7 @@
     showTotal: true,
     showJumper: true,
     showPageSize: true,
-    pageSizeOptions: [30, 50, 100, 150],
+    pageSizeOptions: [100, 500, 1000],
   });
   const pageSizeChange = (pageSize: number) => {
     pagination.pageSize = pageSize;
@@ -212,8 +212,11 @@
     },
   ]);
   const fetchData = async (
-    params: PolicyParams = { current: 1, pageSize: 10 }
+    params: PolicyParams
   ) => {
+    if (!params){
+      params = {...basePagination}
+    }
     setLoading(true);
     try {
       const { data, total } = await QueryConvert(params);

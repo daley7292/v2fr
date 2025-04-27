@@ -330,11 +330,14 @@ const columns = computed<TableColumnData[]>(() => [
 
 // 获取订阅数据
 const fetchData = async (
-  params: PolicyParams = { current: 1, pageSize: 100 }
+  params: PolicyParams
 ) => {
+  if (!params){
+    params = {...basePagination}
+  }
   setLoading(true);
   try {
-    const { data } = await QuerySubscription();
+    const { data } = await QuerySubscription(params);
     renderData.value = data;
   } catch (err) {
     // 可以使用errorHandler或其他方式报告错误

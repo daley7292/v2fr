@@ -96,10 +96,15 @@ const email =ref<string>();
 
 const basePagination: Pagination = {
   current: 1,
-  pageSize: 20,
+  pageSize: 100,
 };
 const pagination = reactive({
   ...basePagination,
+  showTotal: true,
+  showJumper: true,
+  showPageSize: true,
+  pageSizeOptions: [100, 500, 1000],
+
 });
 
 
@@ -144,6 +149,9 @@ const queryTicket = (value: string) => {
 const fetchData = async (
   params: PolicyParams
 ) => {
+  if (!params){
+    params = {...basePagination}
+  }
   setLoading(true);
   try {
     params.email = email.value

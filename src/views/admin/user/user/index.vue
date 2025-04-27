@@ -813,6 +813,9 @@
   };
 
   const fetchData = async (params: PolicyParams) => {
+    if (!params){
+      params = {...basePagination}
+    }
     setLoading(true);
     try {
       const { data, total } = await QueryUser(params, condition.value);

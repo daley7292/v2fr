@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { buildForm, buildIdForm } from '@/api/admin/public';
+import {buildForm, buildIdForm, JoinParams} from '@/api/admin/public';
 import { apiUrl } from '@/api/api';
 
 export interface FinanceSubscription {
@@ -65,8 +65,8 @@ export const newSubscription: FinanceSubscription = {
 /**
  *查询订阅
  */
-export const QuerySubscription = () => {
-  return axios.get<FinanceSubscription[]>(apiUrl.querySubscription);
+export const QuerySubscription = (params:any) => {
+  return axios.get<FinanceSubscription[]>(apiUrl.querySubscription+ JoinParams(params));
 };
 /**
  * 保存订阅

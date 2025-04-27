@@ -290,9 +290,10 @@ const columns = computed<TableColumnData[]>(() => [
   },
 ]);
 
-const fetchData = async (
-  params: Page = { current: 1, pageSize: 100 }
-) => {
+const fetchData = async (params: PolicyParams) => {
+  if (!params){
+    params = {...basePagination}
+  }
   setLoading(true);
   try {
     const { data } = await QueryNodes(params);

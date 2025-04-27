@@ -181,8 +181,11 @@ const columns = computed<TableColumnData[]>(() => [
   },
 ]);
 const fetchData = async (
-  params: PolicyParams = { current: 1, pageSize: 10 }
+  params: PolicyParams
 ) => {
+  if (!params){
+    params = {...basePagination}
+  }
   setLoading(true);
   try {
     const { data, total } = await QueryVoucher(params);
