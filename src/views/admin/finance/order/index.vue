@@ -28,7 +28,7 @@
         </template>
         <!-- 金额显示，除以100转换为元 -->
         <template #total_amount="{ record }">
-          {{ record.total_amount / 100 }}
+          {{ (record.total_amount / 100).toFixed(2) }}
         </template>
         <!-- 订单状态渲染及操作 -->
         <template #status="{ record }">
@@ -36,7 +36,7 @@
           <a-dropdown :popup-max-height="false" v-if="record.status === 0 ">
             <a-button size="small" type="text">
               <a-typography-text type="secondary">
-                <span class="dot-red">•</span>{{ t('order.commission.pending') }}
+                <span class="dot-red">•</span>{{ t('order.status.pending') }}
                 <a-typography-text type="primary">
                   {{ t('order.status.marking') }}
                 </a-typography-text>
@@ -76,27 +76,27 @@
           <a-dropdown :popup-max-height="false" >
             <a-button size="small" type="text">
               <a-typography-text type="secondary">
-                <span v-if="record.commission_balance>0 && record.status != 2">
-                <span :style="record.commission_status==1?'color:#1890ff':record.commission_status==2?'color:green':''" >•</span>
-{{ record.commission_status==0?  t('order.commission.pending') :
+                <span v-if="record.commission_balance>0 && record.status != 2 && record.status != 0 ">
+                 <span :style="record.commission_status==1?'color:#1890ff':record.commission_status==2?'color:green':''" >•</span>
+{{  record.commission_status==0?  t('order.commission.pending') :
                     record.commission_status==1?t('order.commission.processing'):
                         record.commission_status==2?'已发放':record.commission_status===3?'已驳回':'-' }}
                 </span>
                 <span v-else>-</span>
-                <a-typography-text v-if="(record.commission_status===0||record.commission_status===1 || record.commission_status === 3) &&  (record.commission_balance > 0) &&  record.status != 2" type="primary" >
+                <a-typography-text v-if="(record.commission_status===0||record.commission_status===1 || record.commission_status === 3) && record.status != 0  &&  (record.commission_balance > 0) &&  record.status != 2" type="primary" >
                   &nbsp;{{ t('order.status.marking') }}
                 </a-typography-text>
               </a-typography-text>
-              <icon-caret-down v-if="(record.commission_status===0||record.commission_status===1 || record.commission_status ===3) &&  (record.commission_balance > 0)&&  record.status != 2" />
+              <icon-caret-down v-if="(record.commission_status===0||record.commission_status===1 || record.commission_status ===3) && record.status != 0 &&  (record.commission_balance > 0)&&  record.status != 2" />
             </a-button>
-            <template v-if="record.commission_balance > 0 && record.status != 2" #content>
+            <template v-if="record.commission_balance > 0 && record.status != 2 && record.status != 0" #content>
               <a-doption v-if="record.commission_status === 0 && record.commission_balance > 0">
                 <a-button type="text" disabled >
                   {{ t('order.commission.pending') }}
                 </a-button>
               </a-doption>
               <a-doption v-if="(record.commission_status === 1 || record.commission_status === 3) && record.commission_balance > 0">
-                <a-button type="text" @click="passCommissionPayOrder(record,1)" status="success">
+                <a-button type="text" @click="passCommissionPayOrder(record,0)" status="success">
                   {{ t('order.commission.pending') }}
                 </a-button>
               </a-doption>
@@ -110,12 +110,7 @@
                   {{ t('order.commission.valid') }}
                 </a-button>
               </a-doption>
-              <a-doption  v-if="record.commission_status === 0">
-                <a-button type="text" @click="passCommissionPayOrder(record)" >
-                  {{ t('order.commission.pending') }}
-                </a-button>
-              </a-doption>
-              <a-doption  v-if="record.commission_status === 1 || record.commission_balance === 0 ">
+              <a-doption  v-if="record.commission_status === 1 || record.commission_status === 0 ">
                 <a-button type="text" @click="cancelCommissionOrder(record)" status="danger">
                   {{ t('order.commission.invalid') }}
                 </a-button>
@@ -127,7 +122,7 @@
         <template #commission_balance="{ record }">
 
           {{
-            (record.commission_balance === null || record.commission_balance === 0) ||  record.status === 2 ?
+            (record.commission_balance === null || record.commission_balance === 0) ||  record.status === 2 || record.status == 0 ?
               t('order.commission.none') : (record.commission_balance / 100).toFixed(2)
           }}
         </template>
