@@ -124,13 +124,13 @@ const update = () => {
 }
 const emailTest = ()=>{
   sendEmailTest().then(r=>{
-      if (r?.data){
+      if (r?.data&&!r?.log){
         Message.success(t('email.send_test_success'));
       }else{
-        Message.warning({
-          duration:3000,
-          content:r?.log?.error
-        })
+          Message.warning({
+            duration:3000,
+            content:r?.log?.error
+          })
       }
   })
 }
