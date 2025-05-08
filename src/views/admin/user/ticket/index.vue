@@ -31,9 +31,11 @@
           {{ formatTimestamp(record.created_at) }}
         </template>
         <template #operations="{ record }">
+          <a-space>
           <a-button @click="openWindow(record.id)">{{ t('ticketTable.actions.see_details') }}</a-button>
-          <a-button @click="closeTicket(record.id)"
+          <a-button type="primary" @click="closeTicket(record.id)"
             :disabled="record.status === 1">{{ t('ticketTable.actions.close') }}</a-button>
+          </a-space>
         </template>
       </a-table>
     </a-card>
