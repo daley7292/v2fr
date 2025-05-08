@@ -27,12 +27,12 @@
       const res = await getServerLastRank();
       keys.value = [];
       const seriesData = ref<number[]>([]); // Initialize series data array
-      
       if (res.data && res.data.length) {
-        res.data.forEach((item: any) => {
+        for (let i = 0; i < res.data.length; i++) {
+          let item = res.data[res.data.length-i-1]
           keys.value.push(item.server_name);
           seriesData.value.push((item.d + item.u) / 1024 / 1024 / 1024);
-        });
+        }
       }
       
       series.value = [{
@@ -40,7 +40,7 @@
         data: seriesData.value,
         label: {
           show: true,
-          formatter: (params: { value: any; }) => `${params.value} GB`,
+          formatter: (params: { value: any; }) => `${params.value?(params.value).toFixed(2):params.value} GB`,
         },
       }];
     } catch (err) {
@@ -62,7 +62,7 @@
       },
       formatter(params) {
         const [firstElement] = params as ToolTipFormatterParams[];
-        return `${firstElement.value}GB`;
+        return `${firstElement.value?(firstElement.value).toFixed(2):firstElement.value}GB`;
       },
     },
     grid: {
