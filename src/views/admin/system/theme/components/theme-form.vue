@@ -44,7 +44,7 @@ onMounted(() => {
       <a-input v-model="form.theme_via" :placeholder="t('theme.form.theme_via.placeholder')"/>
     </a-form-item>
     <a-form-item :label="t('theme.form.custom_html')">
-      <a-textarea v-model="form.custom_html" :auto-size="true" :placeholder="t('theme.form.custom_html.placeholder')"
+      <a-textarea v-model="form.custom_html" rows="8" :auto-size="true"  :placeholder="t('theme.form.custom_html.placeholder.custom_html')"
                   :show-word-limit="true"/>
     </a-form-item>
     <a-form-item>
