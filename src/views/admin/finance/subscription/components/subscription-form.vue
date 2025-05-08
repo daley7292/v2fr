@@ -43,6 +43,9 @@ const submitSubscription = () => {
   if(!obj["speed_limit"]){
     obj["speed_limit"] =0
   }
+  if (obj["reset_traffic_method"]==="undefined"){
+    obj["reset_traffic_method"] = " "
+  }
 
   // 保存订阅信息
   SaveSubscription(obj).then(r => {
@@ -55,6 +58,11 @@ const submitSubscription = () => {
 
 // 初始化时查询权限组
 queryPermissionGroup()
+onMounted(()=>{
+  if (subscriptionForm.reset_traffic_method == null){
+    subscriptionForm.reset_traffic_method = "undefined"
+  }
+})
 </script>
 
 <template>
@@ -151,7 +159,7 @@ queryPermissionGroup()
       <a-form-item field="post" :label="t('subscription.form.reset_method')">
         <a-select v-model="subscriptionForm.reset_traffic_method"
           :placeholder="t('subscription.placeholder.select_reset_method')">
-          <a-option value="">{{ t('subscription.reset_method.system') }}</a-option>
+          <a-option value="undefined">{{ t('subscription.reset_method.system') }}</a-option>
           <a-option :value="0">{{ t('subscription.reset_method.monthly_first') }}</a-option>
           <a-option :value="3">{{ t('subscription.reset_method.yearly_first') }}</a-option>
           <a-option :value="1">{{ t('subscription.reset_method.monthly') }}</a-option>
