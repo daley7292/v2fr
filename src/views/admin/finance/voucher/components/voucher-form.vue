@@ -36,7 +36,9 @@ const submitVoucher = () => {
     newValue.value = newValue.value * 100
   }
   SaveVoucher(newValue).then(r => {
-    if (r.data) {
+    if (r?.data) {
+      close()
+    }else if ((r+"").indexOf("金额或比例")>0){
       close()
     }
   })
