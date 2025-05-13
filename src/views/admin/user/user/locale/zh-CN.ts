@@ -5,7 +5,7 @@ export default {
     'userTable.columns.banned': '状态',
     'userTable.columns.plan_name': '订阅',
     'userTable.columns.group_id': '权限组',
-    'userTable.columns.u': '已用G',
+    'userTable.columns.u': '已用(G)',
     'userTable.columns.transfer_enable': '流量(G)',
     'userTable.columns.expired_at': '到期时间',
     'userTable.columns.balance': '余额',
