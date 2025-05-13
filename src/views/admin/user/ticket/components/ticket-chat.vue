@@ -117,8 +117,8 @@ onMounted(() => {
     </a-row>
 
     <div v-if="ticketChats.status===0" class="message-input">
-      <a-input-search size="large" @press-enter="replyMsg" v-model="msg" @click="replyMsg"
-                      placeholder="请输入消息并按下回车发送消息" button-text="发送消息"
+      <a-input-search size="large"  v-model="msg" @click="replyMsg"
+                      placeholder="请输入发送消息" button-text="发送消息"
                       search-button/>
     </div>
   </div>
