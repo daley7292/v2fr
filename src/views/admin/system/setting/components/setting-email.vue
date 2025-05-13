@@ -100,19 +100,20 @@
         </span>
       </a-col>
       <a-col :xs="24" :xl="12" style="text-align: right;padding: 2px">
-        <a-button @click="emailTest" type="primary">{{ t('email.send_test') }}</a-button>
+        <a-button @click="emailTest" :loading="sendEmailLoading" type="primary">{{ t('email.send_test') }}</a-button>
       </a-col>
     </a-row>
   </div>
 </template>
 <script setup lang="ts">
-import {reactive, watch} from "vue";
+import {reactive, watch,ref} from "vue";
 import {sendEmailTest} from "@/api/admin/system/system";
 import {Message} from "@arco-design/web-vue";
 import {useI18n} from "vue-i18n";
 
 const {t} = useI18n();
 const props = defineProps(['data'])
+const sendEmailLoading = ref(false)
 const emits = defineEmits(['update'])
 const emailForm = reactive(props.data.email);
 const update = () => {
@@ -123,15 +124,18 @@ const update = () => {
   emits('update', params)
 }
 const emailTest = ()=>{
+  sendEmailLoading.value = true
   sendEmailTest().then(r=>{
-      if (r?.data&&!r?.log){
-        Message.success(t('email.send_test_success'));
+      if (r?.log?.error){
+        Message.warning({
+          duration:3000,
+          content:r?.log?.error
+        })
       }else{
-          Message.warning({
-            duration:3000,
-            content:r?.log?.error
-          })
+        Message.success(t('email.send_test_success'));
       }
+  }).finally(()=>{
+    sendEmailLoading.value = false
   })
 }
 watch(() => props.data, (newVal) => {
