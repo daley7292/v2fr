@@ -14,19 +14,13 @@
         {{ rowIndex + 1 + (pagination.current - 1) * pagination.pageSize }}
       </template>
       <template #record_at="{record}">
-        {{ formatTimestamp(record.record_at) }}
+        {{ formatYYYYMMDD(record.record_at) }}
       </template>
       <template #u="{record}">
-        <span v-if="(record.u/1024)<1">{{ record.u }} B</span>
-        <span v-else-if="(record.u/1024)>=1">{{ (record.u/1024).toFixed(2) }} KB</span>
-        <span v-else-if="(record.u/1024/1024)>=1">{{ (record.u/1024/1024).toFixed(2) }} MB</span>
-        <span v-else="(record.u/1024/1024/1024)>=1">{{ (record.u/1024/1024/1024).toFixed(2) }} GB</span>
+      <span >{{ getBestUnit(record.u) }}</span>
       </template>
       <template #d="{record}">
-        <span v-if="(record.d/1024)<1">{{ record.d }} B</span>
-        <span v-else-if="(record.d/1024)>=1">{{ (record.d/1024).toFixed(2) }} KB</span>
-        <span v-else-if="(record.d/1024/1024)>=1">{{ (record.d/1024/1024).toFixed(2) }} MB</span>
-        <span v-else="(record.d/1024/1024/1024)>=1">{{ (record.d/1024/1024/1024).toFixed(2) }} GB</span>
+        <span >{{ getBestUnit(record.d) }}</span>
       </template>
     </a-table>
   </div>
@@ -39,7 +33,7 @@ import useLoading from '@/hooks/loading';
 import {PolicyParams} from '@/api/list';
 import {Pagination} from '@/types/global';
 import type {TableColumnData} from '@arco-design/web-vue/es/table/interface';
-import {formatTimestamp} from "@/api/admin/public";
+import {formatTimestamp, formatYYYYMMDD} from "@/api/admin/public";
 import {NetworkRecord, QueryUserNetworkRecord} from "@/api/admin/user/user";
 
 type SizeProps = 'mini' | 'small' | 'medium' | 'large';
@@ -53,7 +47,17 @@ const cloneColumns = ref<Column[]>([]);
 const showColumns = ref<Column[]>([]);
 
 const size = ref<SizeProps>('medium');
+const getBestUnit = (value: number): string => {
+  const units = ['B', 'KB', 'MB', 'GB'];
+  let index = 0;
 
+  while (value >= 1024 && index < units.length - 1) {
+    value /= 1024;
+    index++;
+  }
+
+  return `${value.toFixed(2)} ${units[index]}`;
+};
 const basePagination: Pagination = {
   current: 1,
   pageSize: 100,
