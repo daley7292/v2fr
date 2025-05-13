@@ -12,7 +12,6 @@
       <a-col :xs="24" :xl="12" style="text-align: right;padding: 2px">
         <a-input v-model="telegramForm.telegram_bot_token" @change="update" :placeholder="t('telegram.bot_token_placeholder')" allow-clear/>
       </a-col>
-      <a-divider dashed/>
       <a-col v-if="telegramForm.telegram_bot_token" :xs="24" :xl="12" style="padding: 2px">
         <div>
           {{ t('telegram.set_webhook') }}
