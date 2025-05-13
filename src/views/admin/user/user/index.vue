@@ -734,7 +734,7 @@
       sortable: {
         sortDirections: ['ascend', 'descend'],
       },
-      width: 100,
+      width: 120,
     },
     {
       title: t('userTable.columns.transfer_enable'),
