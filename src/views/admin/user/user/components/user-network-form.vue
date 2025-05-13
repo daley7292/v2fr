@@ -18,15 +18,15 @@
       </template>
       <template #u="{record}">
         <span v-if="(record.u/1024)<1">{{ record.u }} B</span>
-        <span v-if="(record.u/1024)>=1">{{ (record.u/1024).toFixed(2) }} KB</span>
-        <span v-if="(record.u/1024/1024)>=1">{{ (record.u/1024/1024).toFixed(2) }} MB</span>
-        <span v-if="(record.u/1024/1024/1024)>=1">{{ (record.u/1024/1024/1024).toFixed(2) }} GB</span>
+        <span v-else-if="(record.u/1024)>=1">{{ (record.u/1024).toFixed(2) }} KB</span>
+        <span v-else-if="(record.u/1024/1024)>=1">{{ (record.u/1024/1024).toFixed(2) }} MB</span>
+        <span v-else="(record.u/1024/1024/1024)>=1">{{ (record.u/1024/1024/1024).toFixed(2) }} GB</span>
       </template>
       <template #d="{record}">
         <span v-if="(record.d/1024)<1">{{ record.d }} B</span>
-        <span v-if="(record.d/1024)>=1">{{ (record.d/1024).toFixed(2) }} KB</span>
-        <span v-if="(record.d/1024/1024)>=1">{{ (record.d/1024/1024).toFixed(2) }} MB</span>
-        <span v-if="(record.d/1024/1024/1024)>=1">{{ (record.d/1024/1024/1024).toFixed(2) }} GB</span>
+        <span v-else-if="(record.d/1024)>=1">{{ (record.d/1024).toFixed(2) }} KB</span>
+        <span v-else-if="(record.d/1024/1024)>=1">{{ (record.d/1024/1024).toFixed(2) }} MB</span>
+        <span v-else="(record.d/1024/1024/1024)>=1">{{ (record.d/1024/1024/1024).toFixed(2) }} GB</span>
       </template>
     </a-table>
   </div>
