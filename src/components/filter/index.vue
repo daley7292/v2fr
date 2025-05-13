@@ -138,7 +138,7 @@ watch(() => props.defaultCond, (newValue) => {
             <div v-else>
               <a-input v-if="item.type === 'input'" v-model="conds[index].value" style="width: 100%;" />
 
-              <a-date-picker v-if="item.type === 'date'" v-model="conds[index].tempValue" @change="onDateChange(index)" style="width: 100%; margin: 0 24px 24px 0;" show-time format="YYYY-MM-DD HH:mm:ss" />
+              <a-date-picker v-if="item.type === 'date'" v-model="conds[index].tempValue" @change="onDateChange(index)" style="width: 100%; " show-time format="YYYY-MM-DD HH:mm:ss" />
 
               <a-select v-if="item.type === 'select' || item.type === 'select-multiple'" v-model="conds[index].value" style="width: 100%" :multiple="item.type == 'select-multiple'">
                 <a-option v-for="(v, vIndex) in item.value" :value="v.value" :key="vIndex">{{ v.des }}</a-option>
