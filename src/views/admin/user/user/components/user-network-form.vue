@@ -13,8 +13,8 @@
       <template #index="{ rowIndex }">
         {{ rowIndex + 1 + (pagination.current - 1) * pagination.pageSize }}
       </template>
-      <template #created_at="{record}">
-        {{ formatTimestamp(record.created_at) }}
+      <template #record_at="{record}">
+        {{ formatTimestamp(record.record_at) }}
       </template>
       <template #u="{record}">
         <span v-if="(record.u/1024)<1">{{ record.u }} B</span>
