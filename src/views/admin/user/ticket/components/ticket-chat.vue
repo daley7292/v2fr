@@ -60,7 +60,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <a-modal :width="450" :visible="userNetworkModal" :footer="false" :unmount-on-close="true"
+    <a-modal :width="530" :visible="userNetworkModal" :footer="false" :unmount-on-close="true"
              @cancel="userNetworkModal=false">
       <template #title>
         流量记录
