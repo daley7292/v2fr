@@ -138,6 +138,7 @@ export default {
 
   'email.config_warning': 'If you change the configuration on this page, you need to restart the queue service. Additionally, the configuration on this page takes precedence over email settings in the .env file',
   'email.host': 'SMTP Server Address',
+  'email.test_failed': 'Send Failed',
   'email.host_desc': 'Service address provided by the email service provider',
   'email.port': 'SMTP Port',
   'email.port_desc': 'Common ports include 25, 465, 587',
@@ -156,7 +157,14 @@ export default {
   'email.input_placeholder': 'Please enter',
   'email.send_test': 'Send Test Email',
   'email.send_test_success': 'Send Test Email Success',
-
+  "email": {
+    "test_failed_reason": "Test Failed Reason",
+    "recipient_address": "Recipient Address",
+    "server": "SMTP Server",
+    "port": "SMTP Port",
+    "encryption": "SMTP Encryption Method",
+    "username": "SMTP Username"
+  },
   'individuation.warning': 'If you deploy the V2board admin panel in a decoupled way, the configuration on this page will not take effect.',
   'individuation.learn_more': 'Learn about decoupling',
   'individuation.sidebar_style': 'Sidebar style',

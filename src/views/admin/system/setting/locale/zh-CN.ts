@@ -135,6 +135,7 @@ export default {
 
   'email.config_warning': '如果你更改了本页配置，需要对队列服务进行重启。另外本页配置优先级高于.env中邮件配置',
   'email.host': 'SMTP服务器地址',
+  'email.test_failed': '发送失败',
   'email.host_desc': '由邮件服务商提供的服务地址',
   'email.port': 'SMTP服务端口',
   'email.port_desc': '常见的端口有25, 465, 587',
@@ -153,6 +154,14 @@ export default {
   'email.input_placeholder': '请输入',
   'email.send_test': '发送测试邮件',
   'email.send_test_success': '发送测试邮件成功',
+  "email": {
+    "test_failed_reason": "失败原因",
+    "recipient_address": "收信地址",
+    "server": "发信服务器",
+    "port": "发信端口",
+    "encryption": "发信加密方式",
+    "username": "发信用户名"
+  },
 
   'individuation.warning': '如果你采用前后分离的方式部署V2board管理端，那么本页配置将不会生效。',
   'individuation.learn_more': '了解前后分离',

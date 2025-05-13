@@ -106,9 +106,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import {reactive, watch,ref} from "vue";
+import {reactive, watch,ref,h} from "vue";
 import {sendEmailTest} from "@/api/admin/system/system";
-import {Message} from "@arco-design/web-vue";
+import {Message,Modal} from "@arco-design/web-vue";
 import {useI18n} from "vue-i18n";
 
 const {t} = useI18n();
@@ -127,9 +127,18 @@ const emailTest = ()=>{
   sendEmailLoading.value = true
   sendEmailTest().then(r=>{
       if (r?.log?.error){
-        Message.warning({
-          duration:3000,
-          content:r?.log?.error
+       Modal.error({
+          title: t('email.test_failed'),
+          content: () => h('div', [
+            h('div', `${t('email.test_failed_reason')}: ${r?.log?.error}`),
+            h('div', `${t('email.recipient_address')}: ${r.log?.email}`),
+            h('div', `${t('email.server')}: ${r.log?.config?.host}`),
+            h('div', `${t('email.port')}: ${r.log?.config?.port}`),
+            h('div', `${t('email.encryption')}: ${r.log?.config?.encryption}`),
+            h('div', `${t('email.username')}: ${r.log?.config?.username}`)
+  ]),
+          modalClass: 'email-test-modal',
+          okText: t('form.close')
         })
       }else{
         Message.success(t('email.send_test_success'));
