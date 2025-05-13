@@ -2,6 +2,7 @@ export default {
   "theme.alert.message": "If you deploy V2board in a front-end and back-end separation manner, the theme configuration will not take effect.",
   "theme.alert.link": "Learn about front-end and back-end separation",
   "theme.button.current_theme": "Current Theme",
+  "theme.button.active_theme": "Active Theme",
   "theme.button.theme_settings": "Theme Settings",
   "theme.form.language": "Default Language",
   "theme.form.theme_color": "Theme Color",

@@ -6,9 +6,9 @@
         {{ t('theme.alert.message') }}<a href="#">{{ t('theme.alert.link') }}</a>
       </a-alert>
     </div>
-    <div class="v2_bg">
+    <div class="v2_bg"  v-for="(item,index) in themes"  :key="index">
       <div class="v2_bg_content">
-        <div style="display: grid;grid-template-columns: auto auto;justify-content: space-between" v-for="(item,index) in themes"  :key="index">
+        <div style="display: grid;grid-template-columns: auto auto;justify-content: space-between">
           <div>
             <div style="line-height: 120px;font-size: 21px;margin: 2px">
               {{item.key}}
@@ -20,7 +20,8 @@
           <div>
             <div style="line-height: 150px">
               <a-space>
-                <a-button type="outline" class="arco-color" shape="round">{{ t('theme.button.current_theme') }}</a-button>
+                <a-button type="outline" class="arco-color"  v-if="defaultTheme === item.key" shape="round" disabled>{{ t('theme.button.current_theme') }}</a-button>
+                <a-button type="outline" class="arco-color" v-else shape="round" @click="activeTheme(item.key)">{{ t('theme.button.active_theme') }}</a-button>
                 <a-button type="outline" shape="round" @click="openTheme(item.key)">{{ t('theme.button.theme_settings') }}</a-button>
               </a-space>
             </div>
@@ -38,7 +39,7 @@
 import { useI18n } from 'vue-i18n';
 import ThemeForm from '@/views/admin/system/theme/components/theme-form.vue';
 import { onMounted,  ref } from "vue";
-import { GetTheme } from "@/api/admin/theme/theme";
+import { GetTheme,SaveTheme } from "@/api/admin/theme/theme";
 
 const addThemeMethod = ref(false)
 const hideAddModal = () => {
@@ -51,13 +52,27 @@ const openTheme = (key: string) => {
   themeName.value = key;
   addThemeMethod.value = true;
 }
+const activeTheme = (key: string) =>{
+  SaveTheme({frontend_theme:key}).then(()=>{
+    GetTheme().then(r=>{
+      const themesData = r.data.themes;
+      defaultTheme.value =  r.data.active;
+      themes.value= []
+      Object.keys(themesData).forEach(key=>{
+        themes.value.push({key:key,value:themesData[key]})
+      })
+    })
+  })
+}
 
 
 const { t } = useI18n();
+const defaultTheme = ref()
 const themes = ref<any[]>([])
 onMounted(()=>{
   GetTheme().then(r=>{
     const themesData = r.data.themes;
+    defaultTheme.value =  r.data.active;
     Object.keys(themesData).forEach(key=>{
       themes.value.push({key:key,value:themesData[key]})
     })
@@ -77,11 +92,12 @@ export default {
 }
 
 .v2_bg {
-  height: 180px;
+  height: 160px;
   background-position: 0 50%;
   background-size: cover;
   background-image: url("https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80");
   background-color: #0665d0 !important;
+  margin-bottom: 1rem;
 }
 
 .v2_bg_content {
@@ -108,7 +124,7 @@ export default {
   font-variant-numeric: tabular-nums;
   font-variant-position: normal;
   font-weight: 400;
-  height: 180px;
+  height: 160px;
   line-height: 24px;
   margin-bottom: 0px;
   margin-left: 0px;

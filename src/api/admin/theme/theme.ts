@@ -21,3 +21,7 @@ export const GetThemeConfig = (params:any) => {
 export const saveThemeConfig = (config: any) => {
     return axios.post<OpResult>(apiUrl.saveThemeConfig, buildForm(config))
 }
+
+export const SaveTheme = (config: any) => {
+    return axios.post<OpResult>(apiUrl.configSave, buildForm(config))
+}

@@ -2,6 +2,7 @@ export default {
   "theme.alert.message": "如果你采用前后分离的方式部署V2board，那么主题配置将不会生效。",
   "theme.alert.link": "了解前后分离",
   "theme.button.current_theme": "当前主题",
+  "theme.button.active_theme": "激活主题",
   "theme.button.theme_settings": "主题设置",
   "theme.form.language": "默认语言",
   "theme.form.theme_color": "主题色",
