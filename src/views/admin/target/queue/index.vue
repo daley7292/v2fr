@@ -55,7 +55,7 @@
 
 <script lang="ts" setup>
 import { GetQueueStats, GetQueueWorkload, QueueStats, QueueWorkload } from "@/api/admin/queue/queue";
-import { onMounted, ref } from "vue";
+import {onDeactivated, onMounted, onUnmounted, ref} from "vue";
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -72,7 +72,12 @@ const queueStats = ref<QueueStats>();
 
 const queueWorkload = ref<QueueWorkload[]>([]);
 
+const query = ref<boolean>(true);
+
 const queryQueue = () => {
+  if (!query.value) {
+    return ;
+  }
   GetQueueStats().then(r => {
     queueStats.value = r.data;
   });
@@ -81,6 +86,10 @@ const queryQueue = () => {
   });
   setTimeout(() => queryQueue(), 2500)
 };
+
+onUnmounted(()=>{
+  query.value = false;
+})
 
 onMounted(() => {
   queryQueue();
