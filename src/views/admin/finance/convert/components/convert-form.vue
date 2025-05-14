@@ -57,7 +57,7 @@
       {
         validator: async (value: string, cb: (error?: string) => void) => {
           console.log(value);
-          if (value === undefined) {
+          if (!value) {
             cb();
             return;
           }
