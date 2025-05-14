@@ -143,7 +143,9 @@ const planUpdate = (params: any) => {
 const priceKeys = ["month_price", "quarter_price", "half_year_price", "year_price", "two_year_price", "three_year_price", "onetime_price", "reset_price"]
 // 编辑订阅
 const editSubscription = (value: FinanceSubscription & Record<string, any>) => {
-  let obj: FinanceSubscription = { force_update: true }
+  let obj: FinanceSubscription = { ...value}
+  obj.force_update = true
+  // let obj: FinanceSubscription = { force_update: true }
   Object.keys(value).forEach(key => {
     if (priceKeys.includes(key)) {
       if (obj[key]){
