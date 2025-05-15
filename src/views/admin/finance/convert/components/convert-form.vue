@@ -26,10 +26,22 @@
     });
     QuerySubscription().then((r) => {
       subscriptions.value = r.data;
+      changeSubscription(convertForm.plan_id)
     });
   };
   if (props.data.end_at) {
     convertForm.time_at = formatTimestamp(props.data.end_at);
+  }
+
+  const selectSubscription = ref<FinanceSubscription>({})
+
+  const changeSubscription = (res)=>{
+    subscriptions.value.forEach((r)=>{
+      if (res === r.id){
+        selectSubscription.value = r
+      }
+    })
+    console.log(selectSubscription.value)
   }
 
   const submitconvert = (value: any, errors: any) => {
@@ -76,6 +88,8 @@
     ],
   };
 
+
+
   querySubscription();
 </script>
 <template>
@@ -104,8 +118,9 @@
         <a-select
           :placeholder="t('convert.form.plan_id.placeholder')"
           v-model="convertForm.plan_id"
+          @change="changeSubscription"
         >
-          <div v-for="(item, index) in subscriptions" :key="index">
+          <div v-for="(item, index) in subscriptions"  :key="index">
             <a-option :value="item.id">{{ item.name }}</a-option>
           </div>
         </a-select>
@@ -118,17 +133,17 @@
           :placeholder="t('convert.form.duration_unit.placeholder')"
           v-model="convertForm.duration_unit"
         >
-          <a-option value="month">{{
+          <a-option v-if="selectSubscription.month_price" value="month">{{
             t('voucher.form.period.month')
           }}</a-option>
-          <a-option value="quarter">{{
+          <a-option  v-if="selectSubscription.quarter_price" value="quarter">{{
             t('voucher.form.period.quarter')
           }}</a-option>
-          <a-option value="half_year">{{
+          <a-option  v-if="selectSubscription.half_year_price"  value="half_year">{{
             t('voucher.form.period.half_year')
           }}</a-option>
-          <a-option value="year">{{ t('voucher.form.period.year') }}</a-option>
-          <a-option value="onetime">{{
+          <a-option  v-if="selectSubscription.year_price"   value="year">{{ t('voucher.form.period.year') }}</a-option>
+          <a-option  v-if="selectSubscription.onetime_price"   value="onetime">{{
             t('voucher.form.period.onetime')
           }}</a-option>
         </a-select>
