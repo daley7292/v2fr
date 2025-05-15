@@ -41,7 +41,6 @@
         selectSubscription.value = r
       }
     })
-    console.log(selectSubscription.value)
   }
 
   const submitconvert = (value: any, errors: any) => {
@@ -68,7 +67,6 @@
       },
       {
         validator: async (value: string, cb: (error?: string) => void) => {
-          console.log(value);
           if (!value) {
             cb();
             return;
