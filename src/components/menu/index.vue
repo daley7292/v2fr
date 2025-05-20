@@ -183,7 +183,7 @@ export default defineComponent({
             mode={topMenu.value ? 'horizontal' : 'vertical'}
             v-model:collapsed={collapsed.value}
             v-model:open-keys={openKeys.value}
-            show-collapse-button={appStore.device !== 'mobile'}
+            // show-collapse-button={appStore.device !== 'mobile'}
             auto-open={false}
             selected-keys={selectedKey.value}
             auto-open-selected={true}
