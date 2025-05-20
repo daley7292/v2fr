@@ -94,7 +94,7 @@
           {{ formatTimestamp(record.created_at) }}
         </template>
         <template #operations="{ record }">
-          <a-dropdown>
+          <a-dropdown :popup-max-height="false">
             <a-button type="text"
               >{{ t('userTable.columns.operations') }}
               <icon-caret-down />
