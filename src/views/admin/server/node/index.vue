@@ -300,8 +300,6 @@ const fetchData = async (params: PolicyParams) => {
     const { data } = await QueryNodes(params);
     renderData.value = data;
     renderDataTemp.value = data;
-    // renderData.value = data.list;
-    // pagination.current = params.current;
     pagination.total = data.length;
   } catch (err) {
     // you can report use errorHandler or other
