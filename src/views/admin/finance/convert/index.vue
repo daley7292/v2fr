@@ -169,6 +169,7 @@
       title: t('convertTable.columns.id'),
       dataIndex: 'id',
       slotName: 'id',
+      width:80,
     },
     {
       title: t('convertTable.columns.name'),

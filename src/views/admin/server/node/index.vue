@@ -257,6 +257,7 @@ const columns = computed<TableColumnData[]>(() => [
     title: t('nodeTable.columns.id'),
     dataIndex: 'id',
     slotName: 'id',
+    width:80,
   },
   {
     title: t('nodeTable.columns.show'),

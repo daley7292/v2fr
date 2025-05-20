@@ -143,6 +143,7 @@ const columns = computed<TableColumnData[]>(() => [
     title: t('voucherTable.columns.id'),
     dataIndex: 'id',
     slotName: 'id',
+    width:80,
   },
   {
     title: t('voucherTable.columns.show'),

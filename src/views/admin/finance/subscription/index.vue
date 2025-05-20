@@ -237,6 +237,7 @@ const columns = computed<TableColumnData[]>(() => [
     title: t('subscriptionTable.columns.id'),
     dataIndex: 'id',
     slotName: 'id',
+    width:80,
   },
   {
     title: t('subscriptionTable.columns.show'),
