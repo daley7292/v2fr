@@ -93,6 +93,12 @@
         <template #created_at="{ record }">
           {{ formatTimestamp(record.created_at) }}
         </template>
+        <template #plan_name="{ record }">
+          {{ record.plan_name?record.plan_name:'-' }}
+        </template>
+        <template #group_id="{ record }">
+          {{ getGroupName(record.group_id) }}
+        </template>
         <template #operations="{ record }">
           <a-dropdown :popup-max-height="false">
             <a-button type="text"
@@ -314,6 +320,7 @@
   import { Pagination } from '@/types/global';
   import type { TableColumnData } from '@arco-design/web-vue/es/table/interface';
   import cloneDeep from 'lodash/cloneDeep';
+  import {  QueryPermissionGroup } from "@/api/admin/server/node";
   import {
     DumpCSV,
     newUser,
@@ -462,6 +469,11 @@
     },
   ]);
 
+  const getGroupName= (groupId: number) => {
+    const group = permissionGroup.value.find((item) => item.id === groupId);
+    return group ? group.name : '-';
+  };
+
   const userForm = ref<User>(newUser);
   const showEditUserModal = ref(false);
   const closeEditModal = () => {
@@ -592,6 +604,10 @@
       }
     });
   };
+  const sort = reactive({
+    direction: 'desc',
+    sort:null,
+  })
   const handleChange = (data, extra, currentDataSource) => {
 
     let sortValue = 'DESC';
@@ -599,11 +615,13 @@
     if (extra.sorter.direction === 'ascend') {
       sortValue = 'ASC';
     }
+    sort.direction = sortValue;
+    sort.sort = (extra.sorter.field=='plan_name')?'plan_id':extra.sorter.field;
     fetchData({
       pageSize: pagination.pageSize,
       current: 1,
-      sort_type:sortValue ,
-      sort:(extra.sorter.field=='plan_name')?'plan_id':extra.sorter.field
+      sort_type:sort.direction ,
+      sort:sort.sort
     });
   };
   const confirmBan = () => {
@@ -687,6 +705,7 @@
       title: t('userTable.columns.id'),
       dataIndex: 'id',
       slotName: 'id',
+      width: 80,
       sortable: {
         sortDirections: ['ascend', 'descend'],
       },
@@ -804,6 +823,12 @@
     fetchData(basePagination);
     filterShow.value = false;
   };
+  // 查询并保存权限组信息
+  const permissionGroup = ref<PermissionGroup[]>([])
+  const queryPermissionGroup = async () => {
+    const { data } = await QueryPermissionGroup()
+    permissionGroup.value = data
+  }
 
   const inviteUser = (record: User) => {
     condition.value = { filter: [{ key: 'invite_user_id', condition: '=', value: record.id, tempValue: '' }] }
@@ -816,6 +841,11 @@
     if (!params){
       params = {...basePagination}
     }
+    if(sort.sort){
+      params.sort = sort.sort
+      params.sort_type = sort.direction
+    }
+
     setLoading(true);
     try {
       const { data, total } = await QueryUser(params, condition.value);
@@ -874,6 +904,7 @@
     },
     { deep: true, immediate: true }
   );
+  queryPermissionGroup()
 </script>
 
 <script lang="ts">

@@ -21,7 +21,9 @@ userForm.transfer_enable = userForm.transfer_enable / 1024 / 1024 / 1024
 userForm.plan_id = userForm.plan_id == null ? '' : userForm.plan_id
 userForm.password = undefined
 userForm.expired_at = userForm.expired_at > 0 ? formatTimestamp(userForm.expired_at) : ''
-
+if (userForm.plan_id===null||userForm.plan_id===0||userForm.plan_id==='0'){
+  userForm.plan_id = ''
+}
 const submitEditUser = () => {
   let params = { ...userForm }
   params.u = userForm.u * 1024 * 1024 * 1024
