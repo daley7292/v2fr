@@ -22,27 +22,26 @@
           <!-- 第一行卡片：当前期间、上一期间、去年同期 -->
           <div class="finance-card-row">
             <a-card class="financial-data-card">
-              <div class="card-value">{{GetCurrencySymbol()}} {{ formatNumber(financeData?.current_period?.income) }}</div>
+              <div class="card-value">{{GetCurrencySymbol()}} {{ formatNumber(financeData?.current_period?.total) }}</div>
               <div class="card-label">{{ $t('card-label-current') }}</div>
               <div class="card-extra">
-                <div class="card-period">{{ formatDateRange(financeData?.current_period?.start_date, financeData?.current_period?.end_date) }}</div>
-                <div class="card-days">{{ financeData?.current_period?.days || 0 }} {{ $t('days-unit') }}</div>
+                <div class="card-period">{{ formatDateRange(financeData?.current_period?.start_time, financeData?.current_period?.end_time) }}</div>
               </div>
             </a-card>
 
             <a-card class="financial-data-card">
-              <div class="card-value">{{GetCurrencySymbol()}} {{ formatNumber(financeData?.previous_period?.income) }}</div>
+              <div class="card-value">{{GetCurrencySymbol()}} {{ formatNumber(financeData?.previous_period?.total) }}</div>
               <div class="card-label">{{ $t('card-label-previous') }}</div>
               <div class="card-extra">
-                <div class="card-period">{{ $t('card-period-startWith') }} {{ financeData?.previous_period?.start_date || '--' }}</div>
+                <div class="card-period">{{ formatDateRange(financeData?.previous_period?.start_time, financeData?.previous_period?.end_time) }}</div>
               </div>
             </a-card>
 
             <a-card class="financial-data-card">
-              <div class="card-value">{{GetCurrencySymbol()}} {{ formatNumber(financeData?.last_year_period?.income) }}</div>
+              <div class="card-value">{{GetCurrencySymbol()}} {{ formatNumber(financeData?.last_year_period?.total) }}</div>
               <div class="card-label">{{ $t('card-label-lastYear') }}</div>
               <div class="card-extra">
-                <div class="card-period">{{ formatDateRange(financeData?.last_year_period?.start_date, financeData?.last_year_period?.end_date) }}</div>
+                <div class="card-period">{{ formatDateRange(financeData?.last_year_period?.start_time, financeData?.last_year_period?.end_time) }}</div>
               </div>
             </a-card>
           </div>
@@ -52,26 +51,26 @@
             <a-card class="financial-data-card" :bordered="false">
               <div
                 class="card-value"
-                :class="{'growth-positive': financeData?.comparison?.chain_ratio >= 0, 'growth-negative': financeData?.comparison?.chain_ratio < 0}"
+                :class="{'growth-positive': financeData?.growth_rate?.mom >= 0, 'growth-negative': financeData?.growth_rate?.mom < 0}"
               >
-                {{ (financeData?.comparison?.chain_ratio || 0) >= 0 ? '+' : '' }}{{ financeData?.comparison?.chain_ratio || 0 }}%
+                {{ (financeData?.growth_rate?.mom || 0) >= 0 ? '+' : '' }}{{ financeData?.growth_rate?.mom || 0 }}%
               </div>
               <div class="card-label">{{ $t('card-label-chainRatio') }}</div>
               <div class="card-extra">
-                <div class="card-period">{{ financeData?.comparison?.chain_text || $t('card-period-defaultChain') }}</div>
+                <div class="card-period">{{ $t('card-period-defaultChain',{ mom: financeData?.growth_rate?.mom || 0 }) }}</div>
               </div>
             </a-card>
 
             <a-card class="financial-data-card" :bordered="false">
               <div
                 class="card-value"
-                :class="{'growth-positive': financeData?.comparison?.year_on_year >= 0, 'growth-negative': financeData?.comparison?.year_on_year < 0}"
+                :class="{'growth-positive': financeData?.growth_rate?.yoy >= 0, 'growth-negative': financeData?.growth_rate?.yoy < 0}"
               >
-                {{ (financeData?.comparison?.year_on_year || 0) >= 0 ? '+' : '' }}{{ financeData?.comparison?.year_on_year || 0 }}%
+                {{ (financeData?.growth_rate?.yoy || 0) >= 0 ? '+' : '' }}{{ financeData?.growth_rate?.yoy || 0 }}%
               </div>
               <div class="card-label">{{ $t('card-label-yearOnYear') }}</div>
               <div class="card-extra">
-                <div class="card-period">{{ financeData?.comparison?.year_text || $t('card-period-defaultYear') }}</div>
+                <div class="card-period">{{ $t('card-period-defaultYear', { yoy: financeData?.growth_rate?.yoy || 0 }) }}</div>
               </div>
             </a-card>
           </div>
