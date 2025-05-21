@@ -134,6 +134,7 @@ export default {
     "user.period": "付款周期",
     "user.newPurchase": "新购",
     "user.renewal": "续费",
+    "user.upgrade": "升级",
     "user.total": "合计",
     "user.count": "数量",
     "user.amount": "金额",

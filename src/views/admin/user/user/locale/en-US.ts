@@ -125,6 +125,7 @@ export default {
   'user.period': 'Period',
   'user.newPurchase': 'New Purchase',
   'user.renewal': 'Renewal',
+  "user.upgrade": "Upgrade",
   'user.total': 'Total',
   'user.count': 'Count',
   'user.amount': 'Amount',

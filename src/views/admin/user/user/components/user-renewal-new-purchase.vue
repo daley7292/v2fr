@@ -32,10 +32,14 @@
           <th>{{ t('user.period') }}</th>
           <th colspan="3">{{ t('user.newPurchase') }}</th>
           <th colspan="3">{{ t('user.renewal') }}</th>
+          <th colspan="3">{{ t('user.upgrade') }}</th>
           <th colspan="3">{{ t('user.total') }}</th>
         </tr>
         <tr>
           <th></th>
+          <th>{{ t('user.count') }}</th>
+          <th>{{ t('user.amount') }}</th>
+          <th>{{ t('user.commission') }}</th>
           <th>{{ t('user.count') }}</th>
           <th>{{ t('user.amount') }}</th>
           <th>{{ t('user.commission') }}</th>
@@ -56,6 +60,9 @@
           <td>{{ period.renewal.count }}</td>
           <td>{{ formatCurrency(period.renewal.amount) }}</td>
           <td>{{ formatCurrency(period.renewal.commission) }}</td>
+          <td>{{ period.upgrade.count }}</td>
+          <td>{{ formatCurrency(period.upgrade.amount) }}</td>
+          <td>{{ formatCurrency(period.upgrade.commission) }}</td>
           <td>{{ period.total.count }}</td>
           <td>{{ formatCurrency(period.total.amount) }}</td>
           <td>{{ formatCurrency(period.total.commission) }}</td>
@@ -99,6 +106,21 @@
             <span class="value">{{ formatCurrency(data.totals.renewal.commission) }}</span>
           </div>
         </div>
+        <div class="summary-card">
+          <h3>{{ t('user.upgrade') }}</h3>
+          <div class="summary-item">
+            <span class="label">{{ t('user.count') }}:</span>
+            <span class="value">{{ data.totals.upgrade.count }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">{{ t('user.amount') }}:</span>
+            <span class="value">{{ formatCurrency(data.totals.upgrade.amount) }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">{{ t('user.commission') }}:</span>
+            <span class="value">{{ formatCurrency(data.totals.upgrade.commission) }}</span>
+          </div>
+        </div>
 
         <div class="summary-card total">
           <h3>{{ t('user.grandTotal') }}</h3>
@@ -113,6 +135,10 @@
           <div class="summary-item">
             <span class="label">{{ t('user.commission') }}:</span>
             <span class="value">{{ formatCurrency(data.totals.new_purchase.commission + data.totals.renewal.commission) }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">{{ t('user.commission') }}:</span>
+            <span class="value">{{ formatCurrency(data.totals.upgrade.commission + data.totals.upgrade.commission) }}</span>
           </div>
         </div>
       </div>
@@ -210,7 +236,7 @@ const formatCurrency = (value: number): string => {
 
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
 
       .summary-card {

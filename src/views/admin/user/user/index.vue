@@ -259,7 +259,7 @@
       <user-network-form :userid="userId" />
     </a-modal>
     <a-modal
-      :width="650"
+      :width="750"
       :visible="userRenewalNewPurchase"
       :footer="false"
       :unmount-on-close="true"
