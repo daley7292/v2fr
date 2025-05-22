@@ -11,6 +11,7 @@ import { reactive, ref } from "vue";
   import useChartOption from '@/hooks/chart-option';
   import { queryOrders } from '@/api/admin/dashboard/dashboard';
   import { ToolTipFormatterParams } from '@/types/echarts';
+import {GetCurrencySymbol} from "@/utils/comm-config";
 
   const props = defineProps(['data']);
   const i18n = useI18n();
@@ -48,8 +49,8 @@ import { reactive, ref } from "vue";
     try {
       await queryOrders().then((res) => {
         daysKey.value= new Set();
-        if (res.data?.commission) {
-          res.data.commission.forEach((item:any) => {
+        if (res.data?.chart_data) {
+          res.data.chart_data.forEach((item:any) => {
             daysKey.value.add(item.date);
             if (!titlesKey.value.includes(item.title)) {
               titlesKey.value.push(item.title);
@@ -170,7 +171,7 @@ const { chartOption } = useChartOption((isDark) => {
       type: 'value',
       axisLabel: {
         color: '#86909C',
-        formatter: '{value}%',
+        formatter: '{value}'+GetCurrencySymbol(),
       },
       splitLine: {
         lineStyle: {
