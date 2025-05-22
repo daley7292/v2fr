@@ -28,7 +28,7 @@
           {{
             record.is_invitation == 1
               ? t('add.finance.is_invitation')
-              : t('add.finance.not_invitation')
+              : '-'
           }}
         </template>
         <template #end_at="{ record }">
