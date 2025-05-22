@@ -37,7 +37,7 @@ queryKnowledge()
 </script>
 
 <template>
-  <div>
+  <div >
     <a-form layout="vertical" @submit="submitKnowledge">
       <a-form-item :label="t('knowledgeTable.columns.title')">
         <a-input v-model="editorValue.title" :placeholder="t('knowledgeTable.columns.title_desc')"  />
@@ -73,6 +73,6 @@ queryKnowledge()
 .v2-button {
   width: 100%;
   text-align: right;
-  margin: 50px
+  margin-right: 50px
 }
 </style>
