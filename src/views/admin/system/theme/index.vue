@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <Breadcrumb :items="['menu.system', 'menu.system.theme']" />
-    <div style="margin-bottom: 20px">
-      <a-alert type="warning">
-        {{ t('theme.alert.message') }}<a href="#">{{ t('theme.alert.link') }}</a>
-      </a-alert>
-    </div>
+<!--    <div style="margin-bottom: 20px">-->
+<!--      <a-alert type="warning">-->
+<!--        {{ t('theme.alert.message') }}<a href="#">{{ t('theme.alert.link') }}</a>-->
+<!--      </a-alert>-->
+<!--    </div>-->
     <div class="v2_bg"  v-for="(item,index) in themes"  :key="index">
       <div class="v2_bg_content">
         <div style="display: grid;grid-template-columns: auto auto;justify-content: space-between">
