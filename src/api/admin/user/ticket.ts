@@ -21,7 +21,7 @@ const defaultWorkOrder: Ticket = {
     subject: "",
     level: 0,
     message:[],
-    status: 0,
+    status: 1,
     reply_status: 0,
     created_at: 0,
     updated_at: 0,

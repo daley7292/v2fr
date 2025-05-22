@@ -75,13 +75,13 @@ onMounted(() => {
       <user-edit-form :data="editUserForm" @close="editUserModal=false"/>
     </a-drawer>
     <a-row
-        style="position: fixed; z-index: 999 ; width: 100%;background-color: #165DFF;color: #ffffff;padding: 5px 20px;">
-      <a-col :span="12" style="text-align: left;">
-        <h3>{{ ticketChats.subject }}</h3>
+        style="position: fixed; z-index: 999 ; width: 100%;background-color: #f8f9fa!important;font-size: 18px;line-height: 60px ;font-weight: normal ;padding: 5px 20px;">
+      <a-col :span="12" style="text-align: left;line-height: 60px">
+        <div>{{ ticketChats.subject }}</div>
       </a-col>
       <a-col :span="12" style="text-align: right;">
-        <a-space style="font-size: 28px;line-height: 52px">
-          <span @click="editUser"><icon-user/></span>
+        <a-space style="font-size: 22px;font-weight: normal ;line-height: 52px">
+          <span @click="editUser"><icon-user /></span>
           <span @click="userNetworkModal=true"><icon-idcard/></span>
         </a-space>
       </a-col>
@@ -93,11 +93,11 @@ onMounted(() => {
                style="width: 100%;line-height: 26px;position: relative">
             <div v-if="item.user_id === ticketChats.user_id" style="text-align: left;">
               <div class="message-container-left">
-                <div class="message-content">{{
+                <div class="message-time" style="margin-left: 12px">{{ formatTimestamp(item.created_at) }}</div>
+                <div class="message-content message-container-left-content">{{
                     item.message
                   }}
                 </div>
-                <div class="message-time"><icon-clock-circle /> &nbsp;{{ formatTimestamp(item.created_at) }}</div>
                 <div class="message-block">
                 </div>
               </div>
@@ -105,9 +105,9 @@ onMounted(() => {
             </div>
             <div v-else style="text-align: right;position: relative;">
               <div class="message-container-right">
-                <div class="message-content">{{ item.message }}
+                <div class="message-time"  style="margin-right: 18px"> &nbsp;&nbsp;&nbsp;&nbsp;{{ formatTimestamp(item.created_at) }}</div>
+                <div class="message-content-right message-container-right-content">{{ item.message }}
                 </div>
-                <div class="message-time"> <icon-clock-circle />&nbsp;{{ formatTimestamp(item.created_at) }}</div>
               </div>
               <div style="clear: both"/>
             </div>
@@ -117,71 +117,82 @@ onMounted(() => {
     </a-row>
 
     <div v-if="ticketChats.status===0" class="message-input">
-      <a-input-search size="large"  v-model="msg" @click="replyMsg"
-                      placeholder="请输入发送消息" button-text="发送消息"
-                      search-button/>
+      <input type="text" class="input"  placeholder="输入内容回复工单..." v-model="msg" @keyup.enter="replyMsg"/>
     </div>
   </div>
 </template>
 
 <style scoped lang="less">
 .message-container-left {
-  background-color: #e0e0e0;
-  color: #313131;
   float: left;
   width: fit-content;
   position: relative;
   padding: 8px;
   border-radius: 5px;
-  margin: 20px;
+  margin: 5px 20px;
 }
 
 .message-container-left:after {
   width: 10px;
   transform: rotate(310deg);
   height: 15px;
-  background-color: #dedede;
-  bottom: -5px;
   position: absolute;
   right: 20px;
   content: ''
 }
 
-.message-container-left>.message-time{
-  color: #42484d;
-}
 
-.message-container-right {
-  min-width: 180px;
-  background-color: #158ffe;;
-  color: white;
-  float: right;
+.message-container-left-content {
+  background-color: #e4efd8!important;
+  color: #313131;
+  float: left;
   width: fit-content;
   position: relative;
   padding: 8px;
   border-radius: 5px;
-  margin: 20px;
+  margin: 10px;
 }
 
-.message-container-right:after {
-  width: 10px;
-  transform: rotate(310deg);
-  height: 15px;
-  background-color: #158ffe;
-  bottom: -5px;
-  position: absolute;
-  right: 20px;
-  content: ''
+
+.message-container-left>.message-time{
+  font-size: 13px;
+  color: #5f6468;
+}
+
+.message-container-right {
+  float: right;
+  width: fit-content;
+  position: relative;
+  padding: 8px;
+  margin: 2px 20px;
+}
+
+
+
+.message-container-right-content {
+  background-color: #f4f4f4 !important;
+  color: #313131;
+  width: fit-content;
+  position: relative;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 2px 10px;
 }
 
 .message-time {
+  color: #666666;
   line-height: 18px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .message-content {
-  min-width: 180px;
-  font-size: 18px;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.message-content-right {
+  float: right;
+  font-size: 16px;
   word-wrap: break-word;
 }
 
@@ -192,10 +203,31 @@ onMounted(() => {
   left: 0px;
   right: 0px;
   font-size: 32px;
-  padding: 20px;
-  background-color: white;
-  box-shadow: rgb(201 201 201) 1px 1px 16px 8px
+  height: 55px;
 }
+
+.input {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background-color: #e4e9f3 !important;
+  padding-left: 35px;
+}
+
+.input:focus {
+  border: none;
+  outline: none;
+}
+
+.input::placeholder {
+  font-size: 18px;
+  color: #777777;
+  background-color: #e4e9f3 !important;
+}
+
 </style>
 <script lang="ts">
 export default {
