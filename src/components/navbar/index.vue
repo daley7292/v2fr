@@ -80,41 +80,41 @@
           </a-button>
         </a-tooltip>
       </li>
-      <li>
-        <a-tooltip
-            :content="
-            isFullscreen
-              ? $t('settings.navbar.screen.toExit')
-              : $t('settings.navbar.screen.toFull')
-          "
-        >
-          <a-button
-              class="nav-btn"
-              type="outline"
-              :shape="'circle'"
-              @click="toggleFullScreen"
-          >
-            <template #icon>
-              <icon-fullscreen-exit v-if="isFullscreen"/>
-              <icon-fullscreen v-else/>
-            </template>
-          </a-button>
-        </a-tooltip>
-      </li>
-      <li>
-        <a-tooltip :content="$t('settings.title')">
-          <a-button
-              class="nav-btn"
-              type="outline"
-              :shape="'circle'"
-              @click="setVisible"
-          >
-            <template #icon>
-              <icon-settings/>
-            </template>
-          </a-button>
-        </a-tooltip>
-      </li>
+<!--      <li>-->
+<!--        <a-tooltip-->
+<!--            :content="-->
+<!--            isFullscreen-->
+<!--              ? $t('settings.navbar.screen.toExit')-->
+<!--              : $t('settings.navbar.screen.toFull')-->
+<!--          "-->
+<!--        >-->
+<!--          <a-button-->
+<!--              class="nav-btn"-->
+<!--              type="outline"-->
+<!--              :shape="'circle'"-->
+<!--              @click="toggleFullScreen"-->
+<!--          >-->
+<!--            <template #icon>-->
+<!--              <icon-fullscreen-exit v-if="isFullscreen"/>-->
+<!--              <icon-fullscreen v-else/>-->
+<!--            </template>-->
+<!--          </a-button>-->
+<!--        </a-tooltip>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a-tooltip :content="$t('settings.title')">-->
+<!--          <a-button-->
+<!--              class="nav-btn"-->
+<!--              type="outline"-->
+<!--              :shape="'circle'"-->
+<!--              @click="setVisible"-->
+<!--          >-->
+<!--            <template #icon>-->
+<!--              <icon-settings/>-->
+<!--            </template>-->
+<!--          </a-button>-->
+<!--        </a-tooltip>-->
+<!--      </li>-->
       <li>
         <a-dropdown trigger="click">
            <a-button ><icon-user />&nbsp;<span v-if="!(!topMenu && appStore.device === 'mobile')">{{email}}</span></a-button>
