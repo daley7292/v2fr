@@ -198,8 +198,8 @@
       </template>
       <user-add-form :data="userForm" @close="closeAddUserModal" />
     </a-modal>
-    <a-modal
-      :width="650"
+    <a-drawer
+        :width="650"
       :visible="showEditUserModal"
       :footer="false"
       :unmount-on-close="true"
@@ -213,7 +213,7 @@
         {{ t('userTable.form.title') }}
       </template>
       <user-edit-form :data="userForm" @close="closeEditModal" />
-    </a-modal>
+    </a-drawer >
     <a-modal
       :width="550"
       :visible="filterShow"
