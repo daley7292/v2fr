@@ -68,7 +68,6 @@ import useLoading from "@/hooks/loading";
 
 const { loading, setLoading } = useLoading();
 const { t } = useI18n();
-const route = useRoute();
 const router = useRouter();
 const login = reactive({
   email: undefined,
@@ -87,6 +86,7 @@ const submit = async ({
     setLoading(true);
     try {
       await userStore.login(values);
+      router.push(`/dashboard`);
     } finally {
       setLoading(false);
     }
