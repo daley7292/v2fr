@@ -55,7 +55,7 @@
   import usePermission from '@/hooks/permission';
   import useResponsive from '@/hooks/responsive';
   import PageLayout from './page-layout.vue';
-  import { QueryCommConfig } from "@/api/user/finance/invite";
+  import { QueryCommConfig } from "@/api/admin/user/invite";
 
   const isInit = ref(false);
   const appStore = useAppStore();

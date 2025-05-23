@@ -89,9 +89,7 @@ const submit = async ({
     setLoading(true);
     try {
       await userStore.login(values);
-      router.push(isAdmin() ? `/${adminUrl}` : "/").then(()=>{
-        location.reload();
-      });
+      router.push(`/${adminUrl}`);
     } finally {
       setLoading(false);
     }

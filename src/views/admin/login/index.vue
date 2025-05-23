@@ -87,9 +87,6 @@ const submit = async ({
     setLoading(true);
     try {
       await userStore.login(values);
-      router.push({
-        name: 'Workplace',
-      }).then(() => location.reload())
     } finally {
       setLoading(false);
     }

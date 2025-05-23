@@ -32,14 +32,6 @@ const router = createRouter({
       },
     },
     {
-      path: '/register_comm',
-      name: 'registerComm',
-      component: () => import('@/views/comm-register/index.vue'),
-      meta: {
-        requiresAuth: false,
-      },
-    },
-    {
       path: '/forget_password',
       name: 'forgetPassword',
       component: () => import('@/views/forget-password/index.vue'),
