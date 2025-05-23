@@ -116,7 +116,7 @@ onMounted(() => {
       </a-col>
     </a-row>
 
-    <div v-if="ticketChats.status===0" class="message-input">
+    <div  class="message-input">
       <input type="text" class="input"  placeholder="输入内容回复工单..." v-model="msg" @keyup.enter="replyMsg"/>
     </div>
   </div>
