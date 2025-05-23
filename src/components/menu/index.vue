@@ -111,7 +111,7 @@ export default defineComponent({
       function travel(_route: RouteRecordRaw[], nodes = []) {
         if (_route) {
           _route.forEach((element) => {
-            if (route.path.includes(adminUrl) && element?.meta?.admin) {
+            if (element?.meta?.admin) {
               const icon = element?.meta?.icon
                   ? () => h(compile(`<${element?.meta?.icon}/>`))
                   : null;
