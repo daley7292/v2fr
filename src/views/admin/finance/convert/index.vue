@@ -24,11 +24,9 @@
         <template #index="{ rowIndex }">
           {{ rowIndex + 1 + (pagination.current - 1) * pagination.pageSize }}
         </template>
-        <template #is_invitation="{ record }">
+        <template #email="{ record }">
           {{
-            record.is_invitation == 1
-              ? t('add.finance.is_invitation')
-              : '-'
+            record.email ?  record.email : '-'
           }}
         </template>
         <template #end_at="{ record }">
@@ -186,11 +184,11 @@
     //   dataIndex: 'duration_value',
     //   slotName: 'duration_value',
     // },
-    {
-      title: t('convertTable.columns.is_invitation'),
-      dataIndex: 'is_invitation',
-      slotName: 'is_invitation',
-    },
+    // {
+    //   title: t('convertTable.columns.is_invitation'),
+    //   dataIndex: 'is_invitation',
+    //   slotName: 'is_invitation',
+    // },
     {
       title: t('convertTable.columns.email'),
       dataIndex: 'email',
