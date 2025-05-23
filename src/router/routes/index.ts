@@ -1,7 +1,7 @@
 import type { RouteRecordNormalized } from 'vue-router';
 import { isAdmin } from "@/utils/auth";
 
-const modules = import.meta.glob('./modules/user/*.ts', { eager: true });
+// const modules = import.meta.glob('./modules/user/*.ts', { eager: true });
 const modulesAdmin = import.meta.glob('./modules/*/*.ts', { eager: true });
 const externalModules = import.meta.glob('./externalModules/*.ts', {
     eager: true,

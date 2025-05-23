@@ -10,9 +10,7 @@ export default function setupUserLoginInfoGuard(router: Router) {
     const userStore = useUserStore();
     if (isLogin()) {
       try {
-        if (to.path === "/"||to.path === "") {
-          router.push("/dashboard");
-        } else if (to.path === `/${adminUrl}/`||to.path === `/${adminUrl}`){
+       if (to.path === `/${adminUrl}/`||to.path === `/${adminUrl}`){
           router.push(`/${adminUrl}/dashboard`);
         } else {
           await userStore.info();
@@ -34,10 +32,6 @@ export default function setupUserLoginInfoGuard(router: Router) {
         return;
       }
       if (to.name === "register") {
-        next();
-        return;
-      }
-      if (to.name === "registerComm") {
         next();
         return;
       }

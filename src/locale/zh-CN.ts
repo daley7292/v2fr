@@ -26,21 +26,6 @@ import localeTargetQueue from '@/views/admin/target/queue/locale/zh-CN';
 
 import localeKnowledge from '@/views/admin/user/knowledge/locale/zh-CN';
 
-
-import localeWorkspace from '@/views/user/dashboard/locale/zh-CN';
-import localeUserTraffic from '@/views/user/user/traffic/locale/zh-CN';
-import localeUserTicket from '@/views/user/user/ticket/locale/zh-CN';
-import localeUserCenter from '@/views/user/user/center/locale/zh-CN';
-import localeUserInvite from '@/views/user/finance/invite/locale/zh-CN';
-import localeUserOrderList from '@/views/user/finance/order/list/locale/zh-CN';
-import localeUserOrderDetails from '@/views/user/finance/order/details/locale/zh-CN';
-
-import localeUserSubscriptionStatus from '@/views/user/subscription/status/locale/zh-CN';
-import localeUserSubscriptionBuy from '@/views/user/subscription/buy/locale/zh-CN';
-import localeUserSubscriptionDetail from '@/views/user/subscription/details/locale/zh-CN';
-import localeUserSubscriptionShop from '@/views/user/subscription/shop/locale/zh-CN';
-
-
 import locale403 from '@/views/exception/403/locale/zh-CN';
 import locale404 from '@/views/exception/404/locale/zh-CN';
 import locale500 from '@/views/exception/500/locale/zh-CN';
@@ -116,22 +101,11 @@ export default {
     ...localeNotice,
     ...localeWorkOrder,
     ...localeKnowledge,
-    ...localeUserTraffic,
-    ...localeUserTicket,
-    ...localeWorkspace,
     ...localeTargetQueue,
-    ...localeUserSubscriptionStatus,
     ...localeSetting,
     ...localeWorkplace,
-    ...localeUserInvite,
-    ...localeUserCenter,
-    ...localeUserOrderList,
-    ...localeUserOrderDetails,
     ...locale403,
     ...locale404,
     ...locale500,
     ...localeUserSetting,
-    ...localeUserSubscriptionBuy,
-    ...localeUserSubscriptionDetail,
-    ...localeUserSubscriptionShop,
 };
