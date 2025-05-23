@@ -130,7 +130,7 @@ const status = ['待支付','已取消','已支付','已完成','其他']
       </template>
       <template #operations="{ record }">
         <a-space>
-          <a-button type="primary"    @click="toPage(`/${adminUrl}/subscription/order`, {trade_no:record.trade_no})"
+          <a-button type="primary"    @click="toPage(`/subscription/order`, {trade_no:record.trade_no})"
           >{{ t('convert.open.order') }}
           </a-button>
         </a-space>

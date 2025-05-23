@@ -13,7 +13,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
-      path: `/${adminUrl}/login`,
+      path: `/login`,
       name: 'login',
       component: () => import('@/views/login/index.vue'),
       meta: {

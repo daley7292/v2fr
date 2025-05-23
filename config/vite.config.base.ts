@@ -6,7 +6,7 @@ import svgLoader from 'vite-svg-loader';
 import configArcoStyleImportPlugin from './plugin/arcoStyleImport';
 
 export default defineConfig({
-  base: `/59617584/`,
+  base: `/59617584`,
   plugins: [
     vue(),
     vueJsx(),

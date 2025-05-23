@@ -66,7 +66,7 @@ const openWindow = (id: any) => {
   const iTop = (window.screen.availHeight - 30 - iHeight) / 2;
   //获得窗口的水平位置
   const iLeft = (window.screen.availWidth - 10 - iWidth) / 2;
-  window.open(`/${adminUrl}/ticket/chat?id=${  id}`, '工单', 'height=' + iHeight + ',innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',status=no,toolbar=no,menubar=no,location=no,resizable=no,scrollbars=0,titlebar=no');
+  window.open(`/ticket/chat?id=${  id}`, '工单', 'height=' + iHeight + ',innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',status=no,toolbar=no,menubar=no,location=no,resizable=no,scrollbars=0,titlebar=no');
 }
 
 const closeTicket = (id: any) => {

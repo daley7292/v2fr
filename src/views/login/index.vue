@@ -89,7 +89,7 @@ const submit = async ({
     setLoading(true);
     try {
       await userStore.login(values);
-      router.push(`/${adminUrl}`);
+      router.push(`/dashboard`);
     } finally {
       setLoading(false);
     }

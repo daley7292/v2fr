@@ -2,7 +2,7 @@ import { adminUrl } from "@/utils/admin-url";
 import { AppRouteRecordRaw } from '../../types';
 
 const TicketChat: AppRouteRecordRaw = {
-    path: `/${adminUrl}/ticket/chat`,
+    path: `/ticket/chat`,
     name: 'AdminTicketChat',
     component: () => import('@/views/admin/user/ticket/components/ticket-chat.vue'),
     meta: {

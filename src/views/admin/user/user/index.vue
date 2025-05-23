@@ -153,7 +153,7 @@
                 </a-button>
               </a-doption>
               <a-doption  @click="
-                      toPage(`/${adminUrl}/subscription/order`, record.id)
+                      toPage(`/subscription/order`, record.id)
                     ">
                 <a-button type="text">
                   <span

@@ -3,7 +3,7 @@ import { DEFAULT_LAYOUT } from '../../base';
 import { AppRouteRecordRaw } from '../../types';
 
 const SYSTEM: AppRouteRecordRaw = {
-  path: `/${adminUrl}/subscription`,
+  path: `/subscription`,
   name: 'financeManager',
   component: DEFAULT_LAYOUT,
   meta: {

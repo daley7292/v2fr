@@ -11,7 +11,7 @@ export default function setupUserLoginInfoGuard(router: Router) {
     if (isLogin()) {
       try {
          if (to.path === `/${adminUrl}/`||to.path === `/${adminUrl}`){
-          router.push(`/${adminUrl}/dashboard`);
+          router.push(`/dashboard`);
         } else {
           await userStore.info();
           next();

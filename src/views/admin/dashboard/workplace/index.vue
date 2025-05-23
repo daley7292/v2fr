@@ -10,7 +10,7 @@
           {{ $t('dashboard.handle.part1') }} {{ queryData.ticket_pending_total }} {{ $t('dashboard.ticket.handle.part2')
           }}
           <strong style="cursor: pointer;font-weight: bold;color: red"
-            @click="toPage(`/${adminUrl}/user/ticket?status=1`)"> {{
+            @click="toPage(`/user/ticket?status=1`)"> {{
               $t('dashboard.handle.immediately') }} </strong>
         </span>
       </a-alert>
@@ -22,32 +22,32 @@
           {{ $t('dashboard.handle.part1') }} {{ queryData.commission_pending_total }} {{
             $t('dashboard.commission.handle.part2') }}
           <strong style="cursor: pointer;font-weight: bold;color: red"
-            @click="toPage(`/${adminUrl}/subscription/order?commission_status=0`)"> {{ $t('dashboard.handle.immediately') }}
+            @click="toPage(`/subscription/order?commission_status=0`)"> {{ $t('dashboard.handle.immediately') }}
           </strong>
         </span>
       </a-alert>
       <!-- 功能快捷入口区域 -->
       <a-row class="grid-demo">
         <a-col :xs="12" :sm="12" :md="12" :lg="6" :xl="6" :xxl="6">
-          <a-card class="card" :bordered="true" @click="toPage(`/${adminUrl}/system/setting`)">
+          <a-card class="card" :bordered="true" @click="toPage(`/system/setting`)">
             <icon-tool />
             <div>{{ $t('dashboard.system.setting') }}</div>
           </a-card>
         </a-col>
         <a-col :xs="12" :sm="12" :md="12" :lg="6" :xl="6" :xxl="6">
-          <a-card class="card" :bordered="true" @click="toPage(`/${adminUrl}/subscription/order`)">
+          <a-card class="card" :bordered="true" @click="toPage(`/subscription/order`)">
             <icon-list />
             <div>{{ $t('dashboard.order.setting') }}</div>
           </a-card>
         </a-col>
         <a-col :xs="12" :sm="12" :md="12" :lg="6" :xl="6" :xxl="6">
-          <a-card class="card" :bordered="true" @click="toPage(`/${adminUrl}/subscription/subscription`)">
+          <a-card class="card" :bordered="true" @click="toPage(`/subscription/subscription`)">
             <icon-lock />
             <div>{{ $t('dashboard.subscription.setting') }}</div>
           </a-card>
         </a-col>
         <a-col :xs="12" :sm="12" :md="12" :lg="6" :xl="6" :xxl="6">
-          <a-card class="card" :bordered="true" @click="toPage(`/${adminUrl}/user/manager`)">
+          <a-card class="card" :bordered="true" @click="toPage(`/user/manager`)">
             <icon-user-group />
             <div>{{ $t('dashboard.user.setting') }}</div>
           </a-card>

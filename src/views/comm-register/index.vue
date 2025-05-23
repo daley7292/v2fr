@@ -102,7 +102,7 @@ const submitRegister = async ({
       setToken(r.data.auth_data);
       setRole(r.data.is_admin);
       Message.success(t('register.form.success'))
-      router.push(isAdmin() ? `/${adminUrl}` : "/").then(()=>{
+      router.push("/").then(()=>{
         location.reload();
       });
     }else{

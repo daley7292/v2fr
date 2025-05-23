@@ -3,7 +3,7 @@ import { DEFAULT_LAYOUT } from '../../base';
 import { AppRouteRecordRaw } from '../../types';
 
 const SYSTEM: AppRouteRecordRaw = {
-  path: `/${adminUrl}`,
+  path: `/`,
   name: 'target',
   component: DEFAULT_LAYOUT,
   meta: {
