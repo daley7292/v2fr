@@ -70,6 +70,7 @@ export const apiUrl = {
     getPaymentForm: `/api/v1/${adminUrl}/payment/getPaymentForm`,
     savePaymentMethod: `/api/v1/${adminUrl}/payment/save`,
     SortPaymentMethod: `/api/v1/${adminUrl}/payment/sort`,
+    DropPaymentMethod: `/api/v1/${adminUrl}/payment/drop`,
     queryUserNetworkRecord: `/api/v1/${adminUrl}/stat/getStatUser`,
     saveKnowledge: `/api/v1/${adminUrl}/knowledge/save`,
     queryKnowledge: `/api/v1/${adminUrl}/knowledge/fetch`,

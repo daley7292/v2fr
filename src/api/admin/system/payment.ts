@@ -117,3 +117,11 @@ export const savePaymentMethod = (params: any) => {
 export const PaymentSort = (params: any) => {
   return axios.post(apiUrl.SortPaymentMethod, buildForm(params));
 };
+
+
+/**
+ * 支付排序
+ */
+export const DropPaymentMethod = (params: any) => {
+  return axios.post(apiUrl.DropPaymentMethod, buildForm(params));
+};
