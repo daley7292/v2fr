@@ -15,9 +15,9 @@
         <a-tab-pane key="4" :title="t('setting.tabs.invitation_commission')">
           <setting-invitation-commission :data="config" @update="update" />
         </a-tab-pane>
-        <a-tab-pane key="5" :title="t('setting.tabs.personalization')">
-          <setting-individuation :data="config" @update="update" />
-        </a-tab-pane>
+<!--        <a-tab-pane key="5" :title="t('setting.tabs.personalization')">-->
+<!--          <setting-individuation :data="config" @update="update" />-->
+<!--        </a-tab-pane>-->
         <a-tab-pane key="6" :title="t('setting.tabs.node')">
           <setting-node :data="config" @update="update" />
         </a-tab-pane>
