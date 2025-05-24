@@ -67,8 +67,8 @@
       <a-col v-if="inviteForm.invite_force_present == 1" :xs="24" :xl="12" style="text-align: right;padding: 2px">
         <a-input v-model="inviteForm.complimentary_package_duration" :min="0" type="number" @change="update" />
       </a-col>
-      <a-divider dashed />
-      <a-col :xs="24" :xl="12" style="padding: 2px">
+      <a-divider v-if="inviteForm.invite_force_present ===1"  dashed />
+      <a-col v-if="inviteForm.invite_force_present ===1" :xs="24" :xl="12" style="padding: 2px">
         <div>
           {{ t('invite.is_Invitation_to_give_model') }}
         </div>
@@ -76,7 +76,7 @@
           {{ t('invite.is_Invitation_to_give_model_desc') }}
         </span>
       </a-col>
-      <a-col   :xs="24" :xl="12" style="text-align: right;padding: 2px">
+      <a-col v-if="inviteForm.invite_force_present===1"   :xs="24" :xl="12" style="text-align: right;padding: 2px">
         <a-select v-model="inviteForm.is_Invitation_to_give" :placeholder="t('invite.is_Invitation_to_give_placeholder')" @change="update">
           <a-option :value="0" :label="t('invite.is_Invitation_to_give_close')" />
           <a-option :value="1" :label="t('invite.is_Invitation_to_give_register')" />
