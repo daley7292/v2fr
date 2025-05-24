@@ -83,13 +83,14 @@
                         record.commission_status==2?'已发放':record.commission_status===3?'已驳回':'-' }}
                 </span>
                 <span v-else>-</span>
-                <a-typography-text v-if="(record.commission_status===0||record.commission_status===1 || record.commission_status === 3) && record.status != 0  &&  (record.commission_balance > 0) &&  record.status != 2" type="primary" >
+                <a-typography-text v-if="(record.commission_status===0|| record.commission_status === 3) && record.status != 0  &&  (record.commission_balance > 0) &&  record.status != 2" type="primary" >
                   &nbsp;{{ t('order.status.marking') }}
                 </a-typography-text>
               </a-typography-text>
-              <icon-caret-down v-if="(record.commission_status===0||record.commission_status===1 || record.commission_status ===3) && record.status != 0 &&  (record.commission_balance > 0)&&  record.status != 2" />
+              <icon-caret-down v-if="(record.commission_status===0|| record.commission_status ===3) && record.status != 0 &&  (record.commission_balance > 0)&&  record.status != 2" />
             </a-button>
-            <template v-if="record.commission_balance > 0 && record.status != 2 && record.status != 0" #content>
+          <!--            佣金:0待确认1发放中2有效3无效-->
+            <template v-if="record.commission_balance > 0 && record.commission_status != 1  && record.status != 2 && record.status != 0" #content>
               <a-doption v-if="record.commission_status === 0 && record.commission_balance > 0">
                 <a-button type="text" disabled >
                   {{ t('order.commission.pending') }}
