@@ -21,12 +21,12 @@
         </template>
         <template #operations="{ record }">
           <a-space>
-            <a-popconfirm :content="t('permission.delete')" @ok="deletePayMethod(record)" type="warning">
-              <a-button type="primary" status="danger">{{ t('button.delete') }}</a-button>
-            </a-popconfirm>
             <a-button @click="editPayMethod(record)" type="primary" size="small">
               {{ $t('button.edit') }}
             </a-button>
+            <a-popconfirm :content="t('permission.delete')" @ok="deletePayMethod(record)" type="warning">
+              <a-button type="primary" status="danger">{{ t('button.delete') }}</a-button>
+            </a-popconfirm>
           </a-space>
         </template>
       </a-table>
