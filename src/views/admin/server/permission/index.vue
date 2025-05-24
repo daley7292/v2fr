@@ -71,7 +71,7 @@ const deletePermission = (value: any) => {
     if (r.data) {
       fetchData()
       Message.success({
-        content: '删除成功'
+        content: t('message.delete.success')
       })
     }
   })
